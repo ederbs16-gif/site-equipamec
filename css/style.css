@@ -1484,16 +1484,43 @@ body.js-loading .page-loader {
 }
 
 /* ===== PARCEIROS: garantir visibilidade contra GSAP ===== */
-#parceiros,
-.partners-track-wrapper,
 .partners-track {
+  animation: partners-scroll 30s linear infinite !important;
+  animation-play-state: running !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  will-change: transform;
+}
+
+.partners-track:hover {
+  animation-play-state: paused !important;
+}
+
+.parceiros,
+.partners-section,
+#parceiros,
+[class*="partner"] {
   opacity: 1 !important;
   visibility: visible !important;
 }
 
-.partners-track {
-  animation: partners-scroll 30s linear infinite;
-  will-change: transform;
+/* ===== MOBILE: serviços (Correção 3) ===== */
+@media (max-width: 768px) {
+  .services,
+  #servicos,
+  [class*="services"] {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  .services-grid {
+    gap: 16px;
+  }
+
+  .section-header,
+  .services .section-header {
+    margin-bottom: 24px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

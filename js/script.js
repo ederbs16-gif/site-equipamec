@@ -177,30 +177,32 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ================================================================
-// GSAP: tudo dentro do window 'load' para medidas corretas
+// GSAP: inicializa com retry até CDN estar disponível
 // ================================================================
-window.addEventListener('load', () => {
-    if (typeof gsap === 'undefined') return;
+function initGSAP() {
+    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+        setTimeout(initGSAP, 50);
+        return;
+    }
 
     gsap.registerPlugin(ScrollTrigger);
 
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReducedMotion) return;
 
-    // ---- Hero entrance ----
-    const heroBar = document.querySelector('.hero-bar');
-    if (heroBar) {
+    // ---- HERO ENTRANCE ----
+    if (document.querySelector('.hero-bar')) {
         const heroTl = gsap.timeline({ delay: 1.4 });
         heroTl
-            .from('.hero-bar',             { scaleY: 0, transformOrigin: 'top', duration: 0.4, ease: 'power2.out' })
-            .from('.hero-eyebrow',         { opacity: 0, y: 16, duration: 0.45 }, '-=0.1')
-            .from('.hero-title',           { opacity: 0, y: 40, duration: 0.7,  ease: 'power3.out' }, '-=0.2')
-            .from('.hero-subtitle',        { opacity: 0, y: 20, duration: 0.5  }, '-=0.3')
-            .from('.hero-buttons .btn',    { opacity: 0, y: 20, stagger: 0.15, duration: 0.4 }, '-=0.2')
-            .from('.hero-scroll-indicator',{ opacity: 0, duration: 0.5 }, '-=0.1');
+            .from('.hero-bar',              { scaleY: 0, transformOrigin: 'top', duration: 0.4, ease: 'power2.out' })
+            .from('.hero-eyebrow',          { opacity: 0, y: 16, duration: 0.45 }, '-=0.1')
+            .from('.hero-title',            { opacity: 0, y: 40, duration: 0.7,  ease: 'power3.out' }, '-=0.2')
+            .from('.hero-subtitle',         { opacity: 0, y: 20, duration: 0.5  }, '-=0.3')
+            .from('.hero-buttons .btn',     { opacity: 0, y: 20, stagger: 0.15, duration: 0.4 }, '-=0.2')
+            .from('.hero-scroll-indicator', { opacity: 0, duration: 0.5 }, '-=0.1');
     }
 
-    // ---- ScrollTrigger: slide-* (gsap.set oculta antes de animar) ----
+    // ---- SCROLL ANIMATIONS (slide-*) ----
     gsap.utils.toArray('[class*="slide-"]').forEach(el => {
         const dir = el.classList.contains('slide-right') ? { x: -50 }
                   : el.classList.contains('slide-left')  ? { x:  50 }
@@ -218,33 +220,9 @@ window.addEventListener('load', () => {
         });
     });
 
-    // ---- Sobre: identity-panels em stagger ----
-    if (document.querySelector('.identity-grid')) {
-        gsap.from('.identity-panel', {
-            scrollTrigger: { trigger: '.identity-grid', start: 'top 80%' },
-            opacity: 0, y: 60, stagger: 0.2, duration: 0.7, ease: 'power2.out'
-        });
-    }
-
-    // ---- Sobre: feature-list em stagger ----
-    if (document.querySelector('.feature-list')) {
-        gsap.from('.feature-list li', {
-            scrollTrigger: { trigger: '.feature-list', start: 'top 80%' },
-            opacity: 0, x: -30, stagger: 0.12, duration: 0.5, ease: 'power2.out'
-        });
-    }
-
-    // ---- Serviços: service-cards em stagger ----
-    if (document.querySelector('.services-grid')) {
-        gsap.from('.service-card', {
-            scrollTrigger: { trigger: '.services-grid', start: 'top 75%' },
-            opacity: 0, y: 60, stagger: 0.2, duration: 0.7, ease: 'back.out(1.2)'
-        });
-    }
-
-    // ---- Stats: contador por .stat-value com data-target ----
+    // ---- CONTADORES DE STATS ----
     gsap.utils.toArray('.stat-value[data-target]').forEach(el => {
-        const target = parseInt(el.getAttribute('data-target'), 10);
+        const target = parseInt(el.getAttribute('data-target'));
         const suffix = el.getAttribute('data-suffix') || '';
         const obj = { val: 0 };
         ScrollTrigger.create({
@@ -256,19 +234,55 @@ window.addEventListener('load', () => {
                     val: target,
                     duration: 2,
                     ease: 'power2.out',
-                    onUpdate: () => {
-                        el.textContent = Math.round(obj.val) + suffix;
-                    }
+                    onUpdate: () => { el.textContent = Math.round(obj.val) + suffix; }
                 });
             }
         });
     });
 
-    // ---- Carrossel de produtos ----
+    // ---- SERVICE CARDS ----
+    if (document.querySelector('.services-grid')) {
+        gsap.from('.service-card', {
+            scrollTrigger: { trigger: '.services-grid', start: 'top 75%' },
+            opacity: 0, y: 60, stagger: 0.2, duration: 0.7, ease: 'back.out(1.2)'
+        });
+    }
+
+    // ---- IDENTITY PANELS ----
+    if (document.querySelector('.identity-grid')) {
+        gsap.from('.identity-panel', {
+            scrollTrigger: { trigger: '.identity-grid', start: 'top 80%' },
+            opacity: 0, y: 60, stagger: 0.2, duration: 0.7, ease: 'power2.out'
+        });
+    }
+
+    // ---- FEATURE LIST ----
+    if (document.querySelector('.feature-list')) {
+        gsap.from('.feature-list li', {
+            scrollTrigger: { trigger: '.feature-list', start: 'top 80%' },
+            opacity: 0, x: -30, stagger: 0.12, duration: 0.5, ease: 'power2.out'
+        });
+    }
+
+    // ---- PRODUTO CARDS ----
+    if (document.querySelector('.produtos-destaque')) {
+        gsap.from('.produto-card', {
+            scrollTrigger: { trigger: '.produtos-destaque', start: 'top 80%' },
+            opacity: 0, x: 60, stagger: 0.15, duration: 0.8, ease: 'power2.out'
+        });
+    }
+
+    // ---- PARTNERS: forçar visibilidade (protege contra gsap.set vazando) ----
+    document.querySelectorAll('.partners-track-wrapper, .partners-track, .partner-logo').forEach(el => {
+        el.style.opacity    = '1';
+        el.style.visibility = 'visible';
+    });
+
+    // ---- CARROSSEL DE PRODUTOS (dots + navegação) ----
     (function() {
-        const track = document.getElementById('produtosTrack');
+        const track   = document.getElementById('produtosTrack');
         const dotsWrap = document.getElementById('produtosDots');
-        if (!track) return;
+        if (!track || !dotsWrap) return;
 
         const cards = track.querySelectorAll('.produto-card');
         const total = cards.length;
@@ -283,25 +297,20 @@ window.addEventListener('load', () => {
 
         function goTo(index) {
             current = Math.max(0, Math.min(index, total - 1));
-            const cardWidth = cards[0].offsetWidth;
-            track.scrollTo({ left: current * cardWidth, behavior: 'smooth' });
-            dotsWrap.querySelectorAll('.dot').forEach((d, i) => {
-                d.classList.toggle('active', i === current);
-            });
+            track.scrollTo({ left: current * cards[0].offsetWidth, behavior: 'smooth' });
+            dotsWrap.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === current));
         }
 
         document.querySelector('.prod-nav-prev')?.addEventListener('click', () => goTo(current - 1));
         document.querySelector('.prod-nav-next')?.addEventListener('click', () => goTo(current + 1));
-
-        gsap.from('.produto-card', {
-            scrollTrigger: { trigger: '.produtos-destaque', start: 'top 80%' },
-            opacity: 0,
-            x: 60,
-            stagger: 0.15,
-            duration: 0.8,
-            ease: 'power2.out'
-        });
     })();
 
     ScrollTrigger.refresh();
-});
+}
+
+// Iniciar logo que o DOM estiver pronto (CDN pode ainda não ter carregado — initGSAP faz retry)
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initGSAP);
+} else {
+    initGSAP();
+}
