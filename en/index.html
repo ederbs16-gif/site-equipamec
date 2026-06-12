@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="../css/style.css">
     
     <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 </head>
 <body>
     <header class="navbar">
@@ -68,17 +70,20 @@
     </header>
 
     <main>
-        <section id="hero" class="hero fade-in">
-            <div class="hero-bg">
-                <img src="../assets/hero-bg.png" alt="Industrial Plant" aria-hidden="true">
-                <div class="overlay"></div>
-            </div>
-            <div class="container hero-content">
-                <h1 class="slide-up">Naval Hydraulic Equipment Solutions</h1>
-                <p class="slide-up delay-1">Industrial solutions for naval & offshore operations</p>
-                <div class="hero-buttons slide-up delay-2">
-                    <a href="#services" class="btn btn-primary">Our Services</a>
-                    <a href="#about" class="btn btn-secondary">About Equipamec</a>
+        <section id="hero" class="hero">
+            <div class="hero-split">
+                <div class="hero-left">
+                    <div class="hero-bar"></div>
+                    <span class="hero-eyebrow">Naval &amp; Offshore Technology</span>
+                    <h1 class="hero-title">Hydraulic Power That Goes Where No One Else Does.</h1>
+                    <p class="hero-subtitle">Naval and offshore equipment designed and built in Caraguatatuba, Brazil. 12 years powering operations where failure is not an option.</p>
+                    <div class="hero-buttons">
+                        <a href="#services" class="btn btn-primary">Our Services</a>
+                        <a href="#about" class="btn btn-secondary">About Equipamec</a>
+                    </div>
+                </div>
+                <div class="hero-image-wrap">
+                    <img src="../assets/Sobre/35HP.png" alt="Equipamec 35HP Hydraulic Power Unit" loading="eager">
                 </div>
             </div>
         </section>
@@ -86,6 +91,7 @@
         <section id="about" class="about section fade-in">
             <div class="container">
                 <div class="section-header text-center slide-up">
+                    <span class="section-eyebrow">Who We Are</span>
                     <h2 style="color: var(--color-white); font-size: 2.8rem; margin-bottom: 0.5rem;">Precision Engineering. Power that Moves the Future.</h2>
                     <p style="font-size: 1.25rem; font-weight: 600; color: var(--color-text-light);">Brazilian pioneer in hydraulic technology and complex metallurgical solutions.</p>
                 </div>
@@ -139,13 +145,49 @@
         <section id="services" class="services section bg-alt fade-in">
             <div class="container">
                 <div class="section-header text-center slide-up">
+                    <span class="section-eyebrow">What We Do</span>
                     <h2>Our Services</h2>
                     <p>Complete solutions designed for extreme performance and unmatched reliability.</p>
                 </div>
                 <div class="services-grid">
-                    <div class="service-card slide-up delay-1"><h3>Robotic Automation</h3><p>Development and deployment of high-precision robotic arms and automated conveyors.</p></div>
-                    <div class="service-card slide-up delay-2"><h3>Preventive Maintenance</h3><p>Continuous monitoring of machine integrity, minimizing operational downtime.</p></div>
-                    <div class="service-card slide-up delay-3"><h3>CNC Machining</h3><p>Manufacturing of complex parts with millimeter tolerances using state-of-the-art technology.</p></div>
+                    <div class="service-card slide-up delay-1">
+                        <div class="card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <circle cx="24" cy="24" r="6"/>
+                                <path d="M24 4v4M24 40v4M4 24h4M40 24h4M8.34 8.34l2.83 2.83M36.83 36.83l2.83 2.83M8.34 39.66l2.83-2.83M36.83 11.17l2.83-2.83"/>
+                                <circle cx="24" cy="24" r="14" stroke-dasharray="4 3"/>
+                            </svg>
+                        </div>
+                        <h3>Hydraulic Power Units</h3>
+                        <p>In-house manufacturing of combustion and electric hydraulic units for naval and offshore operations. Internally developed technology, field-tested.</p>
+                    </div>
+                    <div class="service-card slide-up delay-2">
+                        <div class="card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M6 38c0-6 4-10 8-12l4-2"/>
+                                <path d="M42 38c0-6-4-10-8-12l-4-2"/>
+                                <path d="M18 24l6-6 6 6"/>
+                                <ellipse cx="24" cy="14" rx="10" ry="6"/>
+                                <path d="M14 38h20M10 44h28"/>
+                                <path d="M24 18v6"/>
+                            </svg>
+                        </div>
+                        <h3>Hull Cleaning</h3>
+                        <p>High-pressure HPJ machines for underwater hull cleaning. Reduced fouling, improved fuel efficiency and less time in dry dock.</p>
+                    </div>
+                    <div class="service-card slide-up delay-3">
+                        <div class="card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M30 8l10 10-4 4-10-10z"/>
+                                <path d="M8 30l10 10 4-4-10-10z"/>
+                                <path d="M20 18l10 10"/>
+                                <circle cx="12" cy="36" r="4"/>
+                                <path d="M34 6l4 4-2 2-4-4z"/>
+                            </svg>
+                        </div>
+                        <h3>Boilerwork & Retrofit</h3>
+                        <p>Custom metal structures and naval generator retrofit. From specification to delivery, with full technical traceability.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -153,8 +195,9 @@
         <section id="contact" class="contact section bg-alt fade-in">
             <div class="container split-layout">
                 <div class="contact-info slide-right">
-                    <h2>Contact Us</h2>
-                    <p>Ready to modernize your industry? Contact our construction specialists.</p>
+                    <span class="section-eyebrow">Contact Us</span>
+                    <h2>Get in Touch</h2>
+                    <p>Ready to modernize your operation? Contact our specialists.</p>
                     <div class="contact-details" style="margin-bottom: 2rem;">
                          <p><strong>Email:</strong> comercial@equipamec.com.br</p>
                          <p><strong>Tel:</strong> (12) 99165-4319</p>

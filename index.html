@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="css/style.css">
     
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 </head>
 <body>
     <div id="page-loader" class="page-loader" aria-hidden="true">
@@ -74,21 +76,20 @@
     </header>
 
     <main>
-        <section id="hero" class="hero fade-in">
-            <div class="hero-bg">
-                <video class="hero-video" autoplay muted loop playsinline poster="assets/hero-bg.png" preload="metadata">
-                    <source src="assets/videos/hero.webm" type="video/webm">
-                    <source src="assets/videos/hero.mp4" type="video/mp4">
-                    <img src="assets/hero-bg.png" alt="Industrial Plant" aria-hidden="true">
-                </video>
-                <div class="overlay"></div>
-            </div>
-            <div class="container hero-content">
-                <h1 class="slide-up">Soluções em Equipamentos Hidráulicos Navais</h1>
-                <p class="slide-up delay-1">Soluções industriais para operações navais & offshore</p>
-                <div class="hero-buttons slide-up delay-2">
-                    <a href="#services" class="btn btn-primary">Nossos Serviços</a>
-                    <a href="#about" class="btn btn-secondary">Conheça a Equipamec</a>
+        <section id="hero" class="hero">
+            <div class="hero-split">
+                <div class="hero-left">
+                    <div class="hero-bar"></div>
+                    <span class="hero-eyebrow">Tecnologia Naval &amp; Offshore</span>
+                    <h1 class="hero-title">Potência Hidráulica para Onde Ninguém Chega.</h1>
+                    <p class="hero-subtitle">Equipamentos navais e offshore projetados e fabricados em Caraguatatuba. 12 anos movendo operações onde a falha não é opção.</p>
+                    <div class="hero-buttons">
+                        <a href="#services" class="btn btn-primary">Nossos Serviços</a>
+                        <a href="#about" class="btn btn-secondary">Conheça a Equipamec</a>
+                    </div>
+                </div>
+                <div class="hero-image-wrap">
+                    <img src="assets/Sobre/35HP.png" alt="Unidade Hidráulica Equipamec 35HP" loading="eager">
                 </div>
             </div>
         </section>
@@ -96,6 +97,7 @@
         <section id="about" class="about section fade-in">
             <div class="container">
                 <div class="section-header text-center slide-up">
+                    <span class="section-eyebrow">Quem Somos</span>
                     <h2 style="color: var(--color-white); font-size: 2.8rem; margin-bottom: 0.5rem;">Engenharia de Precisão. Potência que Move o Futuro.</h2>
                     <p style="font-size: 1.25rem; font-weight: 600; color: var(--color-text-light);">Pioneirismo brasileiro em tecnologia hidráulica e soluções metalúrgicas de alta complexidade.</p>
                 </div>
@@ -153,21 +155,21 @@
                     <p>Dados concretos para reforçar a confiança dos nossos clientes.</p>
                 </div>
                 <div class="stats-grid">
-                    <div class="stat-card stat-item" data-target="12">
+                    <div class="stat-card stat-item" data-target="12" data-suffix="+">
                         <span class="stat-value">0</span>
-                        <p>+ Anos de Experiência</p>
+                        <p>Anos de Experiência</p>
                     </div>
-                    <div class="stat-card stat-item" data-target="200">
+                    <div class="stat-card stat-item" data-target="200" data-suffix="+">
                         <span class="stat-value">0</span>
-                        <p>+ Projetos Entregues</p>
+                        <p>Projetos Entregues</p>
                     </div>
                     <div class="stat-card stat-item" data-target="10">
                         <span class="stat-value">0</span>
                         <p>Linhas de Produto</p>
                     </div>
-                    <div class="stat-card stat-item" data-target="98">
+                    <div class="stat-card stat-item" data-target="98" data-suffix="+">
                         <span class="stat-value">0</span>
-                        <p>% Clientes Satisfeitos</p>
+                        <p>Clientes Satisfeitos</p>
                     </div>
                 </div>
             </div>
@@ -176,13 +178,49 @@
         <section id="services" class="services section bg-alt fade-in">
             <div class="container">
                 <div class="section-header text-center slide-up">
+                    <span class="section-eyebrow">O Que Fazemos</span>
                     <h2>Nossos Serviços</h2>
                     <p>Soluções completas desenhadas para performance extrema e confiabilidade incomparável.</p>
                 </div>
                 <div class="services-grid">
-                    <div class="service-card slide-up delay-1"><h3>Automação Robótica</h3><p>Desenvolvimento e implantação de braços robóticos e esteiras automatizadas de alta precisão.</p></div>
-                    <div class="service-card slide-up delay-2"><h3>Manutenção Preventiva</h3><p>Monitoramento contínuo da integridade das máquinas, minimizando paradas operacionais.</p></div>
-                    <div class="service-card slide-up delay-3"><h3>Usinagem CNC</h3><p>Fabricação de peças complexas com tolerâncias milimétricas utilizando tecnologia de ponta.</p></div>
+                    <div class="service-card slide-up delay-1">
+                        <div class="card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <circle cx="24" cy="24" r="6"/>
+                                <path d="M24 4v4M24 40v4M4 24h4M40 24h4M8.34 8.34l2.83 2.83M36.83 36.83l2.83 2.83M8.34 39.66l2.83-2.83M36.83 11.17l2.83-2.83"/>
+                                <circle cx="24" cy="24" r="14" stroke-dasharray="4 3"/>
+                            </svg>
+                        </div>
+                        <h3>Unidades Hidráulicas</h3>
+                        <p>Fabricação própria de unidades a combustão e elétricas para operações navais e offshore. Tecnologia desenvolvida internamente, testada em campo.</p>
+                    </div>
+                    <div class="service-card slide-up delay-2">
+                        <div class="card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M6 38c0-6 4-10 8-12l4-2"/>
+                                <path d="M42 38c0-6-4-10-8-12l-4-2"/>
+                                <path d="M18 24l6-6 6 6"/>
+                                <ellipse cx="24" cy="14" rx="10" ry="6"/>
+                                <path d="M14 38h20M10 44h28"/>
+                                <path d="M24 18v6"/>
+                            </svg>
+                        </div>
+                        <h3>Limpeza de Casco</h3>
+                        <p>Máquinas HPJ de alta pressão para limpeza subaquática de embarcações. Redução de incrustações, eficiência de combustível e menos tempo em doca seca.</p>
+                    </div>
+                    <div class="service-card slide-up delay-3">
+                        <div class="card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M30 8l10 10-4 4-10-10z"/>
+                                <path d="M8 30l10 10 4-4-10-10z"/>
+                                <path d="M20 18l10 10"/>
+                                <circle cx="12" cy="36" r="4"/>
+                                <path d="M34 6l4 4-2 2-4-4z"/>
+                            </svg>
+                        </div>
+                        <h3>Caldeiraria & Retrofit</h3>
+                        <p>Estruturas metálicas sob medida e retrofit de geradores navais. Da especificação à entrega, com rastreabilidade técnica completa.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -191,6 +229,7 @@
         <section id="parceiros" class="section fade-in" style="padding: 4rem 0; overflow: hidden;">
             <div class="container">
                 <div class="section-header text-center slide-up" style="margin-bottom: 2.5rem;">
+                    <span class="section-eyebrow">Quem Confia na Equipamec</span>
                     <h2 style="color: var(--color-white); font-size: 2rem;">Nossos Clientes &amp; Parceiros</h2>
                     <p style="color: var(--color-text-light);">Empresas que confiam na tecnologia Equipamec</p>
                 </div>
@@ -226,7 +265,8 @@
         <section id="contact" class="contact section bg-alt fade-in">
             <div class="container">
                 <div class="section-header text-center slide-up" style="margin-bottom: 3rem;">
-                    <h2>Fale Conosco</h2>
+                    <span class="section-eyebrow">Fale Conosco</span>
+                    <h2>Entre em Contato</h2>
                     <p>Pronto para modernizar sua operação? Entre em contato com nossos especialistas.</p>
                 </div>
 
@@ -269,14 +309,13 @@
                 <!-- Linha 2: Mapa Google -->
                 <div class="slide-up">
                     <h3 style="color: var(--color-white); margin-bottom: 1rem; text-align: center;">Nossa Localização</h3>
-                    <div style="border-radius: 12px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.08);">
+                    <div class="map-wrapper">
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3659.8!2d-45.4085!3d-23.6205!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cbfa9b5b5b5b5b%3A0x0!2sAv.%20Avelino%20Alves%20dos%20Santos%2C%20151%2C%20Caraguatatuba%2C%20SP!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr&q=Av.+Avelino+Alves+dos+Santos,+151,+Pegoreli,+Caraguatatuba,+SP,+11667-830"
-                            width="45%"
+                            width="100%"
                             height="380"
-                            style="display: block; border: 0;"
+                            style="display:block; border:0;"
                             allowfullscreen=""
-                            align-items: center;
                             loading="lazy"
                             referrerpolicy="no-referrer-when-downgrade"
                             title="Localização Equipamec — Caraguatatuba SP">
