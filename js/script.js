@@ -264,5 +264,44 @@ window.addEventListener('load', () => {
         });
     });
 
+    // ---- Carrossel de produtos ----
+    (function() {
+        const track = document.getElementById('produtosTrack');
+        const dotsWrap = document.getElementById('produtosDots');
+        if (!track) return;
+
+        const cards = track.querySelectorAll('.produto-card');
+        const total = cards.length;
+        let current = 0;
+
+        cards.forEach((_, i) => {
+            const dot = document.createElement('div');
+            dot.className = 'dot' + (i === 0 ? ' active' : '');
+            dot.addEventListener('click', () => goTo(i));
+            dotsWrap.appendChild(dot);
+        });
+
+        function goTo(index) {
+            current = Math.max(0, Math.min(index, total - 1));
+            const cardWidth = cards[0].offsetWidth;
+            track.scrollTo({ left: current * cardWidth, behavior: 'smooth' });
+            dotsWrap.querySelectorAll('.dot').forEach((d, i) => {
+                d.classList.toggle('active', i === current);
+            });
+        }
+
+        document.querySelector('.prod-nav-prev')?.addEventListener('click', () => goTo(current - 1));
+        document.querySelector('.prod-nav-next')?.addEventListener('click', () => goTo(current + 1));
+
+        gsap.from('.produto-card', {
+            scrollTrigger: { trigger: '.produtos-destaque', start: 'top 80%' },
+            opacity: 0,
+            x: 60,
+            stagger: 0.15,
+            duration: 0.8,
+            ease: 'power2.out'
+        });
+    })();
+
     ScrollTrigger.refresh();
 });

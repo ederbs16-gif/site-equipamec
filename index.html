@@ -66,7 +66,7 @@
                 </li>
                     <li><a href="index.html#contact" class="btn btn-outline">Contato</a></li>
                 </ul>
-                <div class="lang-switcher"><a href="index.html" class="lang-btn active"><span class="flag">🇧🇷</span> PT</a><span class="lang-divider">|</span><a href="en/index.html" class="lang-btn"><span class="flag">🇺🇸</span> EN</a><span class="lang-divider">|</span><a href="es/index.html" class="lang-btn"><span class="flag">🇪🇸</span> ES</a></div>
+                <div class="lang-switcher"><a href="index.html" class="lang-btn active"><img src="https://flagcdn.com/16x12/br.png" width="16" height="12" alt="Português" class="flag"> PT</a><span class="lang-divider">|</span><a href="en/index.html" class="lang-btn"><img src="https://flagcdn.com/16x12/us.png" width="16" height="12" alt="English" class="flag"> EN</a><span class="lang-divider">|</span><a href="es/index.html" class="lang-btn"><img src="https://flagcdn.com/16x12/es.png" width="16" height="12" alt="Español" class="flag"> ES</a></div>
     
             </nav>
             <button class="hamburger" id="hamburger" aria-label="Menu">
@@ -104,6 +104,63 @@
             <div class="hero-scroll-indicator">
                 <span></span>
             </div>
+        </section>
+
+        <!-- ===== PRODUTOS DESTAQUE ===== -->
+        <section class="produtos-destaque" id="produtos-destaque">
+            <div class="produtos-header container">
+                <h2 class="produtos-titulo">PRODUTOS</h2>
+                <a href="portfolio.html" class="produtos-ver-todos">
+                    VER TODOS OS PRODUTOS <span class="arrow">→</span>
+                </a>
+            </div>
+            <div class="produtos-carrossel-wrap">
+                <button class="prod-nav prod-nav-prev" aria-label="Anterior">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="15 18 9 12 15 6"/></svg>
+                </button>
+                <div class="produtos-track" id="produtosTrack">
+                    <div class="produto-card">
+                        <div class="produto-img-wrap">
+                            <img src="assets/Produtos/unidade_fundo_preto.jpg" alt="Unidade Hidráulica Equipamec" loading="lazy">
+                            <div class="produto-img-overlay"></div>
+                        </div>
+                        <div class="produto-info">
+                            <span class="produto-categoria">Linha Hidráulica</span>
+                            <h3 class="produto-nome">UNIDADES<br>HIDRÁULICAS</h3>
+                            <p class="produto-desc">CH1S · CH2S · CH3SD · CHE2S · CAMC30</p>
+                            <a href="produto_ch2s.html" class="produto-link">Ver linha completa <span>→</span></a>
+                        </div>
+                    </div>
+                    <div class="produto-card">
+                        <div class="produto-img-wrap">
+                            <img src="assets/Produtos/unidade_galpao.jpg" alt="Unidade Hidráulica CH3SD Equipamec" loading="lazy">
+                            <div class="produto-img-overlay"></div>
+                        </div>
+                        <div class="produto-info">
+                            <span class="produto-categoria">Alta Potência</span>
+                            <h3 class="produto-nome">UNIDADE<br>CH3SD 27HP</h3>
+                            <p class="produto-desc">3 tomadas · Motor Branco · Uso offshore</p>
+                            <a href="produto_ch3sd.html" class="produto-link">Ver especificações <span>→</span></a>
+                        </div>
+                    </div>
+                    <div class="produto-card">
+                        <div class="produto-img-wrap">
+                            <img src="assets/Produtos/hpj_deck.jpg" alt="Máquina HPJ Limpeza de Casco Equipamec" loading="lazy">
+                            <div class="produto-img-overlay"></div>
+                        </div>
+                        <div class="produto-info">
+                            <span class="produto-categoria">Limpeza Naval</span>
+                            <h3 class="produto-nome">MÁQUINAS<br>HPJ</h3>
+                            <p class="produto-desc">HPJ-40 · HPJ-41 · Alta pressão subaquática</p>
+                            <a href="produto_hpj40.html" class="produto-link">Ver linha completa <span>→</span></a>
+                        </div>
+                    </div>
+                </div>
+                <button class="prod-nav prod-nav-next" aria-label="Próximo">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="9 18 15 12 9 6"/></svg>
+                </button>
+            </div>
+            <div class="produtos-dots" id="produtosDots"></div>
         </section>
 
         <section id="about" class="about section fade-in">
@@ -168,7 +225,7 @@
                 </div>
                 <div class="stats-grid">
                     <div class="stat-card stat-item">
-                        <span class="stat-value" data-target="12" data-suffix="+">0</span>
+                        <span class="stat-value" data-target="15" data-suffix="+">0</span>
                         <p>Anos de Experiência</p>
                     </div>
                     <div class="stat-card stat-item">
@@ -282,20 +339,22 @@
                     <p>Pronto para modernizar sua operação? Entre em contato com nossos especialistas.</p>
                 </div>
 
-                <!-- Linha 1: Info + Formulário -->
-                <div class="split-layout" style="margin-bottom: 3rem;">
-                    <div class="contact-info slide-right">
-                        <h3 style="color: var(--color-white); margin-bottom: 1rem;">Informações de Contato</h3>
-                        <div class="contact-details" style="margin-bottom: 1.5rem;">
-                            <p><strong>Email:</strong> comercial@equipamec.com.br</p>
-                            <p><strong>Tel:</strong> (12) 99165-4319</p>
-                            <p><strong>Endereço:</strong> Av. Avelino Alves dos Santos, 151<br>Pegoreli, Caraguatatuba – SP, 11667-830</p>
-                        </div>
-                        <a href="https://wa.me/5512991654319?text=Ol%C3%A1%2C%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20os%20produtos%20Equipamec" target="_blank" class="btn btn-primary" style="display:inline-flex;align-items:center;gap:0.5rem;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                            WhatsApp
-                        </a>
+                <!-- Info: email, telefone, endereço -->
+                <div class="contact-info slide-right" style="margin-bottom: 2.5rem;">
+                    <h3 style="color: var(--color-white); margin-bottom: 1rem;">Informações de Contato</h3>
+                    <div class="contact-details" style="margin-bottom: 1.5rem;">
+                        <p><strong>Email:</strong> comercial@equipamec.com.br</p>
+                        <p><strong>Tel:</strong> (12) 99165-4319</p>
+                        <p><strong>Endereço:</strong> Av. Avelino Alves dos Santos, 151<br>Pegoreli, Caraguatatuba – SP, 11667-830</p>
                     </div>
+                    <a href="https://wa.me/5512991654319?text=Ol%C3%A1%2C%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20os%20produtos%20Equipamec" target="_blank" class="btn btn-primary" style="display:inline-flex;align-items:center;gap:0.5rem;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        WhatsApp
+                    </a>
+                </div>
+
+                <!-- Grid: formulário | mapa -->
+                <div class="contact-grid">
                     <div class="contact-form slide-left">
                         <form action="#" method="POST" id="main-contact-form">
                             <div class="form-group">
@@ -313,25 +372,19 @@
                             <button type="submit" class="btn btn-primary w-100">Enviar Mensagem</button>
                         </form>
                     </div>
-
-
-                    </div>
-                </div>
-
-                <!-- Linha 2: Mapa Google -->
-                <div class="slide-up">
-                    <h3 style="color: var(--color-white); margin-bottom: 1rem; text-align: center;">Nossa Localização</h3>
-                    <div class="map-wrapper">
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3659.8!2d-45.4085!3d-23.6205!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cbfa9b5b5b5b5b%3A0x0!2sAv.%20Avelino%20Alves%20dos%20Santos%2C%20151%2C%20Caraguatatuba%2C%20SP!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr&q=Av.+Avelino+Alves+dos+Santos,+151,+Pegoreli,+Caraguatatuba,+SP,+11667-830"
-                            width="100%"
-                            height="380"
-                            style="display:block; border:0;"
-                            allowfullscreen=""
-                            loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade"
-                            title="Localização Equipamec — Caraguatatuba SP">
-                        </iframe>
+                    <div class="slide-up">
+                        <div class="map-wrapper">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3659.8!2d-45.4085!3d-23.6205!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cbfa9b5b5b5b5b%3A0x0!2sAv.%20Avelino%20Alves%20dos%20Santos%2C%20151%2C%20Caraguatatuba%2C%20SP!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr&q=Av.+Avelino+Alves+dos+Santos,+151,+Pegoreli,+Caraguatatuba,+SP,+11667-830"
+                                width="100%"
+                                height="380"
+                                style="display:block; border:0;"
+                                allowfullscreen=""
+                                loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"
+                                title="Localização Equipamec — Caraguatatuba SP">
+                            </iframe>
+                        </div>
                     </div>
                 </div>
             </div>

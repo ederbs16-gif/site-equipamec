@@ -60,7 +60,7 @@
                 </li>
                     <li><a href="index.html#contact" class="btn btn-outline">Contacto</a></li>
                 </ul>
-                <div class="lang-switcher"><a href="../index.html" class="lang-btn"><span class="flag">🇧🇷</span> PT</a><span class="lang-divider">|</span><a href="../en/index.html" class="lang-btn"><span class="flag">🇺🇸</span> EN</a><span class="lang-divider">|</span><a href="index.html" class="lang-btn active"><span class="flag">🇪🇸</span> ES</a></div>
+                <div class="lang-switcher"><a href="../index.html" class="lang-btn"><img src="https://flagcdn.com/16x12/br.png" width="16" height="12" alt="Português" class="flag"> PT</a><span class="lang-divider">|</span><a href="../en/index.html" class="lang-btn"><img src="https://flagcdn.com/16x12/us.png" width="16" height="12" alt="English" class="flag"> EN</a><span class="lang-divider">|</span><a href="index.html" class="lang-btn active"><img src="https://flagcdn.com/16x12/es.png" width="16" height="12" alt="Español" class="flag"> ES</a></div>
     
             </nav>
             <button class="hamburger" id="hamburger" aria-label="Menu">
@@ -98,6 +98,63 @@
             <div class="hero-scroll-indicator">
                 <span></span>
             </div>
+        </section>
+
+        <!-- ===== PRODUCTOS DESTACADOS ===== -->
+        <section class="produtos-destaque" id="produtos-destaque">
+            <div class="produtos-header container">
+                <h2 class="produtos-titulo">PRODUCTOS</h2>
+                <a href="portfolio.html" class="produtos-ver-todos">
+                    VER TODOS LOS PRODUCTOS <span class="arrow">→</span>
+                </a>
+            </div>
+            <div class="produtos-carrossel-wrap">
+                <button class="prod-nav prod-nav-prev" aria-label="Anterior">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="15 18 9 12 15 6"/></svg>
+                </button>
+                <div class="produtos-track" id="produtosTrack">
+                    <div class="produto-card">
+                        <div class="produto-img-wrap">
+                            <img src="../assets/Produtos/unidade_fundo_preto.jpg" alt="Unidad Hidráulica Equipamec" loading="lazy">
+                            <div class="produto-img-overlay"></div>
+                        </div>
+                        <div class="produto-info">
+                            <span class="produto-categoria">Línea Hidráulica</span>
+                            <h3 class="produto-nome">UNIDADES<br>HIDRÁULICAS</h3>
+                            <p class="produto-desc">CH1S · CH2S · CH3SD · CHE2S · CAMC30</p>
+                            <a href="produto_ch2s.html" class="produto-link">Ver línea completa <span>→</span></a>
+                        </div>
+                    </div>
+                    <div class="produto-card">
+                        <div class="produto-img-wrap">
+                            <img src="../assets/Produtos/unidade_galpao.jpg" alt="Unidad Hidráulica CH3SD Equipamec" loading="lazy">
+                            <div class="produto-img-overlay"></div>
+                        </div>
+                        <div class="produto-info">
+                            <span class="produto-categoria">Alta Potencia</span>
+                            <h3 class="produto-nome">UNIDAD<br>CH3SD 27HP</h3>
+                            <p class="produto-desc">3 tomas · Motor Branco · Uso offshore</p>
+                            <a href="produto_ch3sd.html" class="produto-link">Ver especificaciones <span>→</span></a>
+                        </div>
+                    </div>
+                    <div class="produto-card">
+                        <div class="produto-img-wrap">
+                            <img src="../assets/Produtos/hpj_deck.jpg" alt="Máquina HPJ Limpieza de Casco Equipamec" loading="lazy">
+                            <div class="produto-img-overlay"></div>
+                        </div>
+                        <div class="produto-info">
+                            <span class="produto-categoria">Limpieza Naval</span>
+                            <h3 class="produto-nome">MÁQUINAS<br>HPJ</h3>
+                            <p class="produto-desc">HPJ-40 · HPJ-41 · Alta presión subacuática</p>
+                            <a href="produto_hpj40.html" class="produto-link">Ver línea completa <span>→</span></a>
+                        </div>
+                    </div>
+                </div>
+                <button class="prod-nav prod-nav-next" aria-label="Siguiente">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="9 18 15 12 9 6"/></svg>
+                </button>
+            </div>
+            <div class="produtos-dots" id="produtosDots"></div>
         </section>
 
         <section id="about" class="about section fade-in">
@@ -200,6 +257,41 @@
                         <h3>Calderería & Retrofit</h3>
                         <p>Estructuras metálicas a medida y retrofit de generadores navales. De la especificación a la entrega, con trazabilidad técnica completa.</p>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CARRUSEL DE SOCIOS ===== -->
+        <section id="parceiros" class="section fade-in" style="padding: 4rem 0; overflow: hidden;">
+            <div class="container">
+                <div class="section-header text-center slide-up" style="margin-bottom: 2.5rem;">
+                    <span class="section-eyebrow">Quienes Confían en Equipamec</span>
+                    <h2 style="color: var(--color-white); font-size: 2rem;">Nuestros Clientes &amp; Socios</h2>
+                    <p style="color: var(--color-text-light);">Empresas que confían en la tecnología Equipamec</p>
+                </div>
+            </div>
+            <div class="partners-track-wrapper">
+                <div class="partners-track">
+                    <div class="partner-logo"><img src="../assets/parceiros/vsp.svg"       alt="VSP Offshore"></div>
+                    <div class="partner-logo"><img src="../assets/parceiros/globo.svg"     alt="Globo Diver"></div>
+                    <div class="partner-logo"><img src="../assets/parceiros/petrobras.svg" alt="Petrobras"></div>
+                    <div class="partner-logo"><img src="../assets/parceiros/odysseus.svg"  alt="Odysseus"></div>
+                    <div class="partner-logo"><img src="../assets/parceiros/jr.svg"        alt="JR Terraplanagem"></div>
+                    <div class="partner-logo"><img src="../assets/parceiros/sabesp.svg"    alt="Sabesp"></div>
+                    <div class="partner-logo"><img src="../assets/parceiros/northsub.svg"  alt="Northsub"></div>
+                    <div class="partner-logo"><img src="../assets/parceiros/mergmar.svg"   alt="Mergmar"></div>
+                    <div class="partner-logo"><img src="../assets/parceiros/atlas.svg"     alt="Atlas"></div>
+                    <div class="partner-logo"><img src="../assets/parceiros/passaro.svg"   alt="Pássaro Marron"></div>
+                    <div class="partner-logo"><img src="../assets/parceiros/vsp.svg"       alt="VSP Offshore"></div>
+                    <div class="partner-logo"><img src="../assets/parceiros/globo.svg"     alt="Globo Diver"></div>
+                    <div class="partner-logo"><img src="../assets/parceiros/petrobras.svg" alt="Petrobras"></div>
+                    <div class="partner-logo"><img src="../assets/parceiros/odysseus.svg"  alt="Odysseus"></div>
+                    <div class="partner-logo"><img src="../assets/parceiros/jr.svg"        alt="JR Terraplanagem"></div>
+                    <div class="partner-logo"><img src="../assets/parceiros/sabesp.svg"    alt="Sabesp"></div>
+                    <div class="partner-logo"><img src="../assets/parceiros/northsub.svg"  alt="Northsub"></div>
+                    <div class="partner-logo"><img src="../assets/parceiros/mergmar.svg"   alt="Mergmar"></div>
+                    <div class="partner-logo"><img src="../assets/parceiros/atlas.svg"     alt="Atlas"></div>
+                    <div class="partner-logo"><img src="../assets/parceiros/passaro.svg"   alt="Pássaro Marron"></div>
                 </div>
             </div>
         </section>
