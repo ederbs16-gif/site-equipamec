@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     
@@ -66,7 +66,7 @@
                 </li>
                     <li><a href="index.html#contact" class="btn btn-outline">Contato</a></li>
                 </ul>
-                <div class="lang-switcher"><a href="index.html" class="lang-link active">pt</a> | <a href="en/index.html" class="lang-link ">en</a> | <a href="es/index.html" class="lang-link ">es</a></div>
+                <div class="lang-switcher"><a href="index.html" class="lang-btn active"><span class="flag">🇧🇷</span> PT</a><span class="lang-divider">|</span><a href="en/index.html" class="lang-btn"><span class="flag">🇺🇸</span> EN</a><span class="lang-divider">|</span><a href="es/index.html" class="lang-btn"><span class="flag">🇪🇸</span> ES</a></div>
     
             </nav>
             <button class="hamburger" id="hamburger" aria-label="Menu">
@@ -76,21 +76,33 @@
     </header>
 
     <main>
-        <section id="hero" class="hero">
-            <div class="hero-split">
-                <div class="hero-left">
-                    <div class="hero-bar"></div>
-                    <span class="hero-eyebrow">Tecnologia Naval &amp; Offshore</span>
-                    <h1 class="hero-title">Potência Hidráulica para Onde Ninguém Chega.</h1>
-                    <p class="hero-subtitle">Equipamentos navais e offshore projetados e fabricados em Caraguatatuba. 12 anos movendo operações onde a falha não é opção.</p>
-                    <div class="hero-buttons">
-                        <a href="#services" class="btn btn-primary">Nossos Serviços</a>
-                        <a href="#about" class="btn btn-secondary">Conheça a Equipamec</a>
-                    </div>
+        <section class="hero" id="home">
+            <div class="hero-video-wrap">
+                <video class="hero-video" autoplay muted loop playsinline preload="auto">
+                    <source src="assets/videos/hero_equipamec.webm" type="video/webm">
+                    <source src="assets/videos/hero_equipamec.mp4" type="video/mp4">
+                </video>
+                <div class="hero-overlay"></div>
+                <div class="hero-watermark-cover"></div>
+            </div>
+            <div class="hero-content container">
+                <div class="hero-bar"></div>
+                <span class="hero-eyebrow">Tecnologia Naval &amp; Offshore</span>
+                <h1 class="hero-title">
+                    Potência Hidráulica para<br>
+                    <em>Onde Ninguém Chega.</em>
+                </h1>
+                <p class="hero-subtitle">
+                    Equipamentos navais e offshore projetados e fabricados em Caraguatatuba.
+                    12 anos movendo operações onde a falha não é opção.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#services" class="btn btn-primary">Nossos Serviços</a>
+                    <a href="#about" class="btn btn-outline">Conheça a Equipamec</a>
                 </div>
-                <div class="hero-image-wrap">
-                    <img src="assets/Sobre/35HP.png" alt="Unidade Hidráulica Equipamec 35HP" loading="eager">
-                </div>
+            </div>
+            <div class="hero-scroll-indicator">
+                <span></span>
             </div>
         </section>
 
@@ -155,20 +167,20 @@
                     <p>Dados concretos para reforçar a confiança dos nossos clientes.</p>
                 </div>
                 <div class="stats-grid">
-                    <div class="stat-card stat-item" data-target="12" data-suffix="+">
-                        <span class="stat-value">0</span>
+                    <div class="stat-card stat-item">
+                        <span class="stat-value" data-target="12" data-suffix="+">0</span>
                         <p>Anos de Experiência</p>
                     </div>
-                    <div class="stat-card stat-item" data-target="200" data-suffix="+">
-                        <span class="stat-value">0</span>
+                    <div class="stat-card stat-item">
+                        <span class="stat-value" data-target="200" data-suffix="+">0</span>
                         <p>Projetos Entregues</p>
                     </div>
-                    <div class="stat-card stat-item" data-target="10">
-                        <span class="stat-value">0</span>
+                    <div class="stat-card stat-item">
+                        <span class="stat-value" data-target="10">0</span>
                         <p>Linhas de Produto</p>
                     </div>
-                    <div class="stat-card stat-item" data-target="98" data-suffix="+">
-                        <span class="stat-value">0</span>
+                    <div class="stat-card stat-item">
+                        <span class="stat-value" data-target="98" data-suffix="%">0</span>
                         <p>Clientes Satisfeitos</p>
                     </div>
                 </div>

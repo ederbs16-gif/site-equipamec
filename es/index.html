@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
     
@@ -60,7 +60,7 @@
                 </li>
                     <li><a href="index.html#contact" class="btn btn-outline">Contacto</a></li>
                 </ul>
-                <div class="lang-switcher"><a href="../index.html" class="lang-link ">pt</a> | <a href="../en/index.html" class="lang-link ">en</a> | <a href="index.html" class="lang-link active">es</a></div>
+                <div class="lang-switcher"><a href="../index.html" class="lang-btn"><span class="flag">🇧🇷</span> PT</a><span class="lang-divider">|</span><a href="../en/index.html" class="lang-btn"><span class="flag">🇺🇸</span> EN</a><span class="lang-divider">|</span><a href="index.html" class="lang-btn active"><span class="flag">🇪🇸</span> ES</a></div>
     
             </nav>
             <button class="hamburger" id="hamburger" aria-label="Menu">
@@ -70,21 +70,33 @@
     </header>
 
     <main>
-        <section id="hero" class="hero">
-            <div class="hero-split">
-                <div class="hero-left">
-                    <div class="hero-bar"></div>
-                    <span class="hero-eyebrow">Tecnología Naval &amp; Offshore</span>
-                    <h1 class="hero-title">Potencia Hidráulica para Donde Nadie Llega.</h1>
-                    <p class="hero-subtitle">Equipos navales y offshore diseñados y fabricados en Caraguatatuba, Brasil. 12 años impulsando operaciones donde el fallo no es una opción.</p>
-                    <div class="hero-buttons">
-                        <a href="#services" class="btn btn-primary">Nuestros Servicios</a>
-                        <a href="#about" class="btn btn-secondary">Conozca Equipamec</a>
-                    </div>
+        <section class="hero" id="home">
+            <div class="hero-video-wrap">
+                <video class="hero-video" autoplay muted loop playsinline preload="auto">
+                    <source src="../assets/videos/hero_equipamec.webm" type="video/webm">
+                    <source src="../assets/videos/hero_equipamec.mp4" type="video/mp4">
+                </video>
+                <div class="hero-overlay"></div>
+                <div class="hero-watermark-cover"></div>
+            </div>
+            <div class="hero-content container">
+                <div class="hero-bar"></div>
+                <span class="hero-eyebrow">Tecnología Naval &amp; Offshore</span>
+                <h1 class="hero-title">
+                    Potencia Hidráulica para<br>
+                    <em>Donde Nadie Llega.</em>
+                </h1>
+                <p class="hero-subtitle">
+                    Equipos navales y offshore diseñados y fabricados en Caraguatatuba, Brasil.
+                    12 años impulsando operaciones donde el fallo no es una opción.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#services" class="btn btn-primary">Nuestros Servicios</a>
+                    <a href="#about" class="btn btn-outline">Conozca Equipamec</a>
                 </div>
-                <div class="hero-image-wrap">
-                    <img src="../assets/Sobre/35HP.png" alt="Unidad Hidráulica Equipamec 35HP" loading="eager">
-                </div>
+            </div>
+            <div class="hero-scroll-indicator">
+                <span></span>
             </div>
         </section>
 

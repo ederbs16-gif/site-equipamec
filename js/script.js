@@ -1,3 +1,6 @@
+// ================================================================
+// NON-GSAP: DOM-ready code (navbar, forms, UI helpers)
+// ================================================================
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- Navbar scroll ---
@@ -34,16 +37,15 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const formData = new FormData(contactForm);
             const fullName = (formData.get('fullName') || '').toString().trim();
-            const email = (formData.get('email') || '').toString().trim();
-            const message = (formData.get('message') || '').toString().trim();
+            const email    = (formData.get('email')    || '').toString().trim();
+            const message  = (formData.get('message')  || '').toString().trim();
             if (!message && !fullName) return;
             const finalMessage = [
-                message ? message : '(sem mensagem)',
+                message  ? message              : '(sem mensagem)',
                 fullName ? `\nNome: ${fullName}` : '',
-                email ? `\nEmail: ${email}` : ''
+                email    ? `\nEmail: ${email}`   : ''
             ].filter(Boolean).join('');
-            const phone = '5512991654319';
-            window.open(`https://wa.me/${phone}?text=${encodeURIComponent(finalMessage)}`, '_blank');
+            window.open(`https://wa.me/5512991654319?text=${encodeURIComponent(finalMessage)}`, '_blank');
             contactForm.reset();
             const btn = contactForm.querySelector('button[type="submit"]');
             if (btn) {
@@ -61,10 +63,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- Seletor de idioma ---
-    const langSwitchers = document.querySelectorAll('.lang-switcher .lang-link');
-    langSwitchers.forEach(switcher => {
-        switcher.addEventListener('click', (e) => {
-            langSwitchers.forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.lang-switcher .lang-btn, .lang-switcher .lang-link').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            document.querySelectorAll('.lang-switcher .lang-btn, .lang-switcher .lang-link')
+                    .forEach(s => s.classList.remove('active'));
             e.currentTarget.classList.add('active');
         });
     });
@@ -77,18 +79,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Isotope (portfolio + gallery) ---
     const portfolioGrid = document.getElementById('portfolio-grid');
     if (portfolioGrid && typeof Isotope !== 'undefined' && typeof imagesLoaded !== 'undefined') {
-        imagesLoaded(portfolioGrid, function () {
+        imagesLoaded(portfolioGrid, () => {
             const iso = new Isotope(portfolioGrid, {
                 itemSelector: '.gallery-item',
                 layoutMode: 'fitRows',
                 percentPosition: true,
             });
-            const filterBtns = document.querySelectorAll('#img-filters .filter-btn');
-            filterBtns.forEach(button => {
+            document.querySelectorAll('#img-filters .filter-btn').forEach(button => {
                 button.addEventListener('click', () => {
-                    const filterValue = button.getAttribute('data-filter');
-                    iso.arrange({ filter: filterValue });
-                    filterBtns.forEach(btn => btn.classList.remove('active'));
+                    iso.arrange({ filter: button.getAttribute('data-filter') });
+                    document.querySelectorAll('#img-filters .filter-btn')
+                            .forEach(btn => btn.classList.remove('active'));
                     button.classList.add('active');
                 });
             });
@@ -97,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const mainGalleryGrid = document.querySelector('.gallery-grid');
     if (mainGalleryGrid && typeof Isotope !== 'undefined' && typeof imagesLoaded !== 'undefined') {
-        imagesLoaded(mainGalleryGrid, function () {
+        imagesLoaded(mainGalleryGrid, () => {
             new Isotope(mainGalleryGrid, {
                 itemSelector: '.gallery-item',
                 layoutMode: 'masonry',
@@ -121,10 +122,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const size = Math.max(rect.width, rect.height);
             ripple.className = 'ripple';
             ripple.style.width = ripple.style.height = `${size}px`;
-            ripple.style.left = `${event.clientX - rect.left - size / 2}px`;
-            ripple.style.top = `${event.clientY - rect.top - size / 2}px`;
+            ripple.style.left  = `${event.clientX - rect.left  - size / 2}px`;
+            ripple.style.top   = `${event.clientY - rect.top   - size / 2}px`;
             button.appendChild(ripple);
-            window.setTimeout(() => ripple.remove(), 600);
+            setTimeout(() => ripple.remove(), 600);
         });
     });
 
@@ -142,25 +143,8 @@ document.addEventListener('DOMContentLoaded', () => {
         fadeElements.forEach(el => observer.observe(el));
     }
 
-    // --- Stats counter ---
-    function animateStatCount(item) {
-        const valueEl = item.querySelector('.stat-value');
-        const target = Number(item.dataset.target);
-        const suffix = item.dataset.suffix || '';
-        if (!valueEl || Number.isNaN(target)) return;
-        const duration = 2000;
-        const easeOut = t => 1 - Math.pow(1 - t, 3);
-        let start = null;
-        requestAnimationFrame(function step(timestamp) {
-            if (!start) start = timestamp;
-            const progress = Math.min((timestamp - start) / duration, 1);
-            valueEl.textContent = Math.ceil(easeOut(progress) * target) + (progress === 1 ? suffix : '');
-            if (progress < 1) requestAnimationFrame(step);
-        });
-    }
-
-    // --- Parallax helpers (mantidos para compatibilidade) ---
-    const aboutParallax = document.querySelector('.parallax-image');
+    // --- Parallax helpers ---
+    const aboutParallax  = document.querySelector('.parallax-image');
     const partnerSection = document.querySelector('.parceiros');
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -183,113 +167,102 @@ document.addEventListener('DOMContentLoaded', () => {
     const pageLoader = document.getElementById('page-loader');
     if (pageLoader) {
         document.body.classList.add('js-loading');
-        window.setTimeout(() => {
-            pageLoader.style.opacity = '0';
-            pageLoader.style.visibility = 'hidden';
+        setTimeout(() => {
+            pageLoader.style.opacity     = '0';
+            pageLoader.style.visibility  = 'hidden';
             document.body.classList.remove('js-loading');
         }, 1200);
     }
 
-    // ================================================================
-    // GSAP ANIMATIONS (prefers-reduced-motion safe)
-    // ================================================================
+});
+
+// ================================================================
+// GSAP: tudo dentro do window 'load' para medidas corretas
+// ================================================================
+window.addEventListener('load', () => {
     if (typeof gsap === 'undefined') return;
 
     gsap.registerPlugin(ScrollTrigger);
 
-    const mm = gsap.matchMedia();
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
 
-    mm.add('(prefers-reduced-motion: no-preference)', () => {
+    // ---- Hero entrance ----
+    const heroBar = document.querySelector('.hero-bar');
+    if (heroBar) {
+        const heroTl = gsap.timeline({ delay: 1.4 });
+        heroTl
+            .from('.hero-bar',             { scaleY: 0, transformOrigin: 'top', duration: 0.4, ease: 'power2.out' })
+            .from('.hero-eyebrow',         { opacity: 0, y: 16, duration: 0.45 }, '-=0.1')
+            .from('.hero-title',           { opacity: 0, y: 40, duration: 0.7,  ease: 'power3.out' }, '-=0.2')
+            .from('.hero-subtitle',        { opacity: 0, y: 20, duration: 0.5  }, '-=0.3')
+            .from('.hero-buttons .btn',    { opacity: 0, y: 20, stagger: 0.15, duration: 0.4 }, '-=0.2')
+            .from('.hero-scroll-indicator',{ opacity: 0, duration: 0.5 }, '-=0.1');
+    }
 
-        // --- Hero entrance (dispara após o page loader) ---
-        const heroBar = document.querySelector('.hero-bar');
-        if (heroBar) {
-            const heroTl = gsap.timeline({ delay: 1.3 });
-            heroTl
-                .from('.hero-bar',      { scaleY: 0, duration: 0.4, ease: 'power2.out' })
-                .from('.hero-eyebrow',  { opacity: 0, y: 20, duration: 0.5 }, '-=0.1')
-                .from('.hero-title',    { opacity: 0, y: 40, duration: 0.7, ease: 'power3.out' }, '-=0.2')
-                .from('.hero-subtitle', { opacity: 0, y: 20, duration: 0.5 }, '-=0.3')
-                .from('.hero-buttons .btn', { opacity: 0, y: 20, stagger: 0.15, duration: 0.4 }, '-=0.2')
-                .from('.hero-image-wrap', { opacity: 0, x: 60, duration: 0.8, ease: 'power2.out' }, '-=0.6');
-        }
-
-        // --- ScrollTrigger: slide-up ---
-        gsap.utils.toArray('.slide-up').forEach(el => {
-            gsap.fromTo(el,
-                { opacity: 0, y: 50 },
-                {
-                    scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' },
-                    opacity: 1, y: 0, duration: 0.8, ease: 'power2.out'
-                }
-            );
+    // ---- ScrollTrigger: slide-* (gsap.set oculta antes de animar) ----
+    gsap.utils.toArray('[class*="slide-"]').forEach(el => {
+        const dir = el.classList.contains('slide-right') ? { x: -50 }
+                  : el.classList.contains('slide-left')  ? { x:  50 }
+                  : { y: 50 };
+        gsap.set(el, { opacity: 0, ...dir });
+        gsap.to(el, {
+            scrollTrigger: {
+                trigger: el,
+                start: 'top 88%',
+                toggleActions: 'play none none none'
+            },
+            opacity: 1, x: 0, y: 0,
+            duration: 0.8,
+            ease: 'power2.out'
         });
-
-        // --- ScrollTrigger: slide-right (entra da esquerda) ---
-        gsap.utils.toArray('.slide-right').forEach(el => {
-            gsap.fromTo(el,
-                { opacity: 0, x: -50 },
-                {
-                    scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' },
-                    opacity: 1, x: 0, duration: 0.8, ease: 'power2.out'
-                }
-            );
-        });
-
-        // --- ScrollTrigger: slide-left (entra da direita) ---
-        gsap.utils.toArray('.slide-left').forEach(el => {
-            gsap.fromTo(el,
-                { opacity: 0, x: 50 },
-                {
-                    scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' },
-                    opacity: 1, x: 0, duration: 0.8, ease: 'power2.out'
-                }
-            );
-        });
-
-        // --- Sobre: identity-panels em stagger ---
-        if (document.querySelector('.identity-grid')) {
-            gsap.from('.identity-panel', {
-                scrollTrigger: { trigger: '.identity-grid', start: 'top 80%' },
-                opacity: 0, y: 60, stagger: 0.2, duration: 0.7, ease: 'power2.out'
-            });
-        }
-
-        // --- Sobre: feature-list items em stagger ---
-        if (document.querySelector('.feature-list')) {
-            gsap.from('.feature-list li', {
-                scrollTrigger: { trigger: '.feature-list', start: 'top 80%' },
-                opacity: 0, x: -30, stagger: 0.12, duration: 0.5, ease: 'power2.out'
-            });
-        }
-
-        // --- Serviços: service-cards em stagger ---
-        if (document.querySelector('.services-grid')) {
-            gsap.from('.service-card', {
-                scrollTrigger: { trigger: '.services-grid', start: 'top 75%' },
-                opacity: 0, y: 60, stagger: 0.2, duration: 0.7, ease: 'back.out(1.2)'
-            });
-        }
-
-        // --- Parceiros: entrada da seção ---
-        if (document.querySelector('#parceiros')) {
-            gsap.from('.partners-track-wrapper', {
-                scrollTrigger: { trigger: '#parceiros', start: 'top 85%' },
-                opacity: 0, y: 30, duration: 0.8, ease: 'power2.out'
-            });
-        }
-
-        // --- Stats counter via ScrollTrigger ---
-        if (document.querySelector('#stats')) {
-            ScrollTrigger.create({
-                trigger: '#stats',
-                start: 'top 75%',
-                once: true,
-                onEnter: () => {
-                    document.querySelectorAll('.stat-item').forEach(item => animateStatCount(item));
-                }
-            });
-        }
     });
 
+    // ---- Sobre: identity-panels em stagger ----
+    if (document.querySelector('.identity-grid')) {
+        gsap.from('.identity-panel', {
+            scrollTrigger: { trigger: '.identity-grid', start: 'top 80%' },
+            opacity: 0, y: 60, stagger: 0.2, duration: 0.7, ease: 'power2.out'
+        });
+    }
+
+    // ---- Sobre: feature-list em stagger ----
+    if (document.querySelector('.feature-list')) {
+        gsap.from('.feature-list li', {
+            scrollTrigger: { trigger: '.feature-list', start: 'top 80%' },
+            opacity: 0, x: -30, stagger: 0.12, duration: 0.5, ease: 'power2.out'
+        });
+    }
+
+    // ---- Serviços: service-cards em stagger ----
+    if (document.querySelector('.services-grid')) {
+        gsap.from('.service-card', {
+            scrollTrigger: { trigger: '.services-grid', start: 'top 75%' },
+            opacity: 0, y: 60, stagger: 0.2, duration: 0.7, ease: 'back.out(1.2)'
+        });
+    }
+
+    // ---- Stats: contador por .stat-value com data-target ----
+    gsap.utils.toArray('.stat-value[data-target]').forEach(el => {
+        const target = parseInt(el.getAttribute('data-target'), 10);
+        const suffix = el.getAttribute('data-suffix') || '';
+        const obj = { val: 0 };
+        ScrollTrigger.create({
+            trigger: el,
+            start: 'top 85%',
+            once: true,
+            onEnter: () => {
+                gsap.to(obj, {
+                    val: target,
+                    duration: 2,
+                    ease: 'power2.out',
+                    onUpdate: () => {
+                        el.textContent = Math.round(obj.val) + suffix;
+                    }
+                });
+            }
+        });
+    });
+
+    ScrollTrigger.refresh();
 });

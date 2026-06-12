@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     
@@ -60,7 +60,7 @@
                 </li>
                     <li><a href="index.html#contact" class="btn btn-outline">Contact</a></li>
                 </ul>
-                <div class="lang-switcher"><a href="../index.html" class="lang-link ">pt</a> | <a href="index.html" class="lang-link active">en</a> | <a href="../es/index.html" class="lang-link ">es</a></div>
+                <div class="lang-switcher"><a href="../index.html" class="lang-btn"><span class="flag">🇧🇷</span> PT</a><span class="lang-divider">|</span><a href="index.html" class="lang-btn active"><span class="flag">🇺🇸</span> EN</a><span class="lang-divider">|</span><a href="../es/index.html" class="lang-btn"><span class="flag">🇪🇸</span> ES</a></div>
     
             </nav>
             <button class="hamburger" id="hamburger" aria-label="Menu">
@@ -70,21 +70,33 @@
     </header>
 
     <main>
-        <section id="hero" class="hero">
-            <div class="hero-split">
-                <div class="hero-left">
-                    <div class="hero-bar"></div>
-                    <span class="hero-eyebrow">Naval &amp; Offshore Technology</span>
-                    <h1 class="hero-title">Hydraulic Power That Goes Where No One Else Does.</h1>
-                    <p class="hero-subtitle">Naval and offshore equipment designed and built in Caraguatatuba, Brazil. 12 years powering operations where failure is not an option.</p>
-                    <div class="hero-buttons">
-                        <a href="#services" class="btn btn-primary">Our Services</a>
-                        <a href="#about" class="btn btn-secondary">About Equipamec</a>
-                    </div>
+        <section class="hero" id="home">
+            <div class="hero-video-wrap">
+                <video class="hero-video" autoplay muted loop playsinline preload="auto">
+                    <source src="../assets/videos/hero_equipamec.webm" type="video/webm">
+                    <source src="../assets/videos/hero_equipamec.mp4" type="video/mp4">
+                </video>
+                <div class="hero-overlay"></div>
+                <div class="hero-watermark-cover"></div>
+            </div>
+            <div class="hero-content container">
+                <div class="hero-bar"></div>
+                <span class="hero-eyebrow">Naval &amp; Offshore Technology</span>
+                <h1 class="hero-title">
+                    Hydraulic Power That Goes<br>
+                    <em>Where No One Else Does.</em>
+                </h1>
+                <p class="hero-subtitle">
+                    Naval and offshore equipment designed and built in Caraguatatuba, Brazil.
+                    12 years powering operations where failure is not an option.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#services" class="btn btn-primary">Our Services</a>
+                    <a href="#about" class="btn btn-outline">About Equipamec</a>
                 </div>
-                <div class="hero-image-wrap">
-                    <img src="../assets/Sobre/35HP.png" alt="Equipamec 35HP Hydraulic Power Unit" loading="eager">
-                </div>
+            </div>
+            <div class="hero-scroll-indicator">
+                <span></span>
             </div>
         </section>
 
