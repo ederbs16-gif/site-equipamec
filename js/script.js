@@ -268,9 +268,14 @@ function runGSAPAnimations() {
     }
 
     // ---- PRODUTO CARDS ----
-    if (document.querySelector('.produtos-destaque')) {
+    if (document.querySelector('.produto-card')) {
+        gsap.set('.produto-card', { opacity: 1, x: 0 });
         gsap.from('.produto-card', {
-            scrollTrigger: { trigger: '.produtos-destaque', start: 'top 80%' },
+            scrollTrigger: {
+                trigger: '.produtos-destaque',
+                start: 'top bottom-=50px',
+                once: true
+            },
             opacity: 0, x: 60, stagger: 0.15, duration: 0.8, ease: 'power2.out'
         });
     }
