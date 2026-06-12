@@ -199,8 +199,15 @@ function runGSAPAnimations() {
     console.log('Elementos slide encontrados:', slideEls.length);
 
     slideEls.forEach(el => {
-        // Pular elementos dentro do carrossel de parceiros
-        if (el.closest('.partners-track-wrapper') || el.closest('#parceiros') || el.closest('.parceiros')) return;
+        // Pular service cards, produto cards e carrossel de parceiros
+        if (
+            el.closest('.service-card') ||
+            el.classList.contains('service-card') ||
+            el.closest('.produto-card') ||
+            el.closest('.partners-track-wrapper') ||
+            el.closest('#parceiros') ||
+            el.closest('.parceiros')
+        ) return;
 
         const dir = el.classList.contains('slide-right') ? { x: -50 }
                   : el.classList.contains('slide-left')  ? { x:  50 }
@@ -244,10 +251,18 @@ function runGSAPAnimations() {
     });
 
     // ---- SERVICE CARDS ----
-    if (document.querySelector('.services-grid')) {
-        gsap.from('.service-card', {
-            scrollTrigger: { trigger: '.services-grid', start: 'top 75%' },
-            opacity: 0, y: 60, stagger: 0.2, duration: 0.7, ease: 'back.out(1.2)'
+    if (document.querySelector('.service-card')) {
+        gsap.set('.service-card', { opacity: 1, y: 0 });
+        ScrollTrigger.create({
+            trigger: '.services-grid',
+            start: 'top bottom-=50px',
+            once: true,
+            onEnter: () => {
+                gsap.fromTo('.service-card',
+                    { opacity: 0, y: 60 },
+                    { opacity: 1, y: 0, stagger: 0.2, duration: 0.7, ease: 'back.out(1.2)' }
+                );
+            }
         });
     }
 
