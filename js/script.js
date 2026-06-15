@@ -297,6 +297,15 @@ function runGSAPAnimations() {
         heroEl?.addEventListener('mouseenter', () => clearInterval(autoplayTimer));
         heroEl?.addEventListener('mouseleave', () => resetAutoplay());
 
+        // Fallback Chrome: tentar safePlay no primeiro clique/toque no hero
+        const heroPlayFallback = () => {
+            safePlay(slides[current].querySelector('.hero-video'));
+            heroEl?.removeEventListener('click', heroPlayFallback);
+            heroEl?.removeEventListener('touchstart', heroPlayFallback);
+        };
+        heroEl?.addEventListener('click', heroPlayFallback, { once: true });
+        heroEl?.addEventListener('touchstart', heroPlayFallback, { once: true });
+
         resetAutoplay();
     })();
 
