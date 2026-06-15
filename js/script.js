@@ -213,7 +213,7 @@ function runGSAPAnimations() {
             : el.classList.contains('slide-left') ? { x: 50 }
                 : { y: 50 };
 
-        gsap.set(el, { opacity: 0, ...dir });
+        gsap.set(el, { opacity: 1, ...dir });
         gsap.to(el, {
             scrollTrigger: {
                 trigger: el,
@@ -268,30 +268,49 @@ function runGSAPAnimations() {
 
     // ---- IDENTITY PANELS ----
     if (document.querySelector('.identity-grid')) {
-        gsap.from('.identity-panel', {
-            scrollTrigger: { trigger: '.identity-grid', start: 'top 80%' },
-            opacity: 0, y: 60, stagger: 0.2, duration: 0.7, ease: 'power2.out'
+        gsap.set('.identity-panel', { opacity: 1, y: 0 });
+        ScrollTrigger.create({
+            trigger: '.identity-grid',
+            start: 'top 80%',
+            once: true,
+            onEnter: () => {
+                gsap.fromTo('.identity-panel',
+                    { opacity: 0, y: 60 },
+                    { opacity: 1, y: 0, stagger: 0.2, duration: 0.7, ease: 'power2.out' }
+                );
+            }
         });
     }
 
     // ---- FEATURE LIST ----
     if (document.querySelector('.feature-list')) {
-        gsap.from('.feature-list li', {
-            scrollTrigger: { trigger: '.feature-list', start: 'top 80%' },
-            opacity: 0, x: -30, stagger: 0.12, duration: 0.5, ease: 'power2.out'
+        gsap.set('.feature-list li', { opacity: 1, x: 0 });
+        ScrollTrigger.create({
+            trigger: '.feature-list',
+            start: 'top 80%',
+            once: true,
+            onEnter: () => {
+                gsap.fromTo('.feature-list li',
+                    { opacity: 0, x: -30 },
+                    { opacity: 1, x: 0, stagger: 0.12, duration: 0.5, ease: 'power2.out' }
+                );
+            }
         });
     }
 
     // ---- PRODUTO CARDS ----
     if (document.querySelector('.produto-card')) {
         gsap.set('.produto-card', { opacity: 1, x: 0 });
-        gsap.from('.produto-card', {
-            scrollTrigger: {
-                trigger: '.produtos-destaque',
-                start: 'top bottom-=50px',
-                once: true
-            },
-            opacity: 0, x: 60, stagger: 0.15, duration: 0.8, ease: 'power2.out'
+        ScrollTrigger.create({
+            trigger: '.produtos-destaque',
+            start: 'top bottom-=50px',
+            once: true,
+            onEnter: () => {
+                gsap.fromTo('.produto-card',
+                    { opacity: 0, x: 60 },
+                    { opacity: 1, x: 0, stagger: 0.15, duration: 0.8, ease: 'power2.out' }
+                );
+            }
         });
     }
 
@@ -303,10 +322,9 @@ function runGSAPAnimations() {
         gsap.set(el, { clearProps: 'all' });
     });
 
-    // ---- FADE-IN (substitui IntersectionObserver) ----
+    // ---- FADE-IN (via ScrollTrigger; CSS opacity:0 é o estado inicial) ----
     document.querySelectorAll('.fade-in').forEach(el => {
         if (el.closest('.partners-track-wrapper') || el.closest('#parceiros')) return;
-        gsap.set(el, { opacity: 1 });
         ScrollTrigger.create({
             trigger: el,
             start: 'top bottom-=30px',
