@@ -174,6 +174,36 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1200);
     }
 
+    // --- Portfolio showcase filter ---
+    const catBtns = document.querySelectorAll('.portfolio-cat-btn');
+    const showcaseItems = document.querySelectorAll('.produto-showcase-item');
+
+    if (catBtns.length && showcaseItems.length) {
+        catBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                catBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const cat = btn.getAttribute('data-cat');
+
+                showcaseItems.forEach(item => {
+                    const itemCat = item.getAttribute('data-cat');
+                    if (cat === 'all' || itemCat === cat) {
+                        item.classList.remove('hidden');
+                    } else {
+                        item.classList.add('hidden');
+                    }
+                });
+
+                const visibleItems = [...showcaseItems].filter(it => !it.classList.contains('hidden'));
+                visibleItems.forEach((vi, idx) => {
+                    const counter = vi.querySelector('.psi-counter');
+                    if (counter) counter.textContent = String(idx + 1).padStart(2, '0');
+                });
+            });
+        });
+    }
+
 });
 
 // ================================================================
@@ -478,6 +508,33 @@ function runGSAPAnimations() {
         document.querySelector('.prod-nav-prev')?.addEventListener('click', () => goTo(current - 1));
         document.querySelector('.prod-nav-next')?.addEventListener('click', () => goTo(current + 1));
     })();
+
+    // ---- PORTFOLIO SHOWCASE SCROLL ANIMATIONS ----
+    if (document.querySelector('.produto-showcase-item')) {
+        document.querySelectorAll('.produto-showcase-item').forEach((item, i) => {
+            const content = item.querySelector('.psi-content');
+            const media = item.querySelector('.psi-media');
+            const isEven = i % 2 === 1;
+
+            gsap.set([content, media], { opacity: 1 });
+
+            ScrollTrigger.create({
+                trigger: item,
+                start: 'top bottom-=100px',
+                once: true,
+                onEnter: () => {
+                    gsap.fromTo(media,
+                        { opacity: 0, x: isEven ? 40 : -40 },
+                        { opacity: 1, x: 0, duration: 0.9, ease: 'power2.out' }
+                    );
+                    gsap.fromTo(content,
+                        { opacity: 0, y: 30 },
+                        { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out', delay: 0.15 }
+                    );
+                }
+            });
+        });
+    }
 
     ScrollTrigger.refresh();
     console.log('ScrollTriggers registrados:', ScrollTrigger.getAll().length);
