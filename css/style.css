@@ -818,7 +818,7 @@ ul {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
-/* Animation Classes — GSAP usa gsap.set() para ocultar antes de animar */
+/* Animation Classes — visíveis por padrão; JS anima via ScrollTrigger explícito */
 .slide-up,
 .slide-right,
 .slide-left {

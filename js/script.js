@@ -194,44 +194,77 @@ function runGSAPAnimations() {
             .from('.hero-buttons .btn',  { opacity: 0, y: 20, stagger: 0.15, duration: 0.4 }, '-=0.2');
     }
 
-    // ---- SCROLL ANIMATIONS (slide-*) ----
-    const slideEls = gsap.utils.toArray('[class*="slide-"]');
-    console.log('Elementos slide encontrados:', slideEls.length);
+    // ---- SOBRE / ABOUT ----
+    const sobreSection = document.querySelector('#sobre') || document.querySelector('#about');
+    if (sobreSection) {
+        const featureItems = sobreSection.querySelectorAll('.feature-list li, .feature-item');
+        if (featureItems.length) {
+            gsap.set(featureItems, { opacity: 1, x: 0 });
+            ScrollTrigger.create({
+                trigger: sobreSection,
+                start: 'top bottom-=100px',
+                once: true,
+                onEnter: () => {
+                    gsap.fromTo(featureItems,
+                        { opacity: 0, x: -20 },
+                        { opacity: 1, x: 0, stagger: 0.1, duration: 0.5, ease: 'power2.out' }
+                    );
+                }
+            });
+        }
 
-    slideEls.forEach(el => {
-        // Pular service cards, produto cards e carrossel de parceiros
-        if (
-            el.closest('.service-card') ||
-            el.classList.contains('service-card') ||
-            el.closest('.produto-card') ||
-            el.closest('.partners-track-wrapper') ||
-            el.closest('#parceiros') ||
-            el.closest('.parceiros')
-        ) return;
-
-        const dir = el.classList.contains('slide-right') ? { x: -50 }
-                  : el.classList.contains('slide-left')  ? { x:  50 }
-                  : { y: 50 };
-
-        gsap.set(el, { opacity: 0, ...dir });
-        gsap.to(el, {
-            scrollTrigger: {
-                trigger: el,
+        const identityPanels = sobreSection.querySelectorAll('.identity-panel, .diferencial-item, [class*="diferencial"]');
+        if (identityPanels.length) {
+            gsap.set(identityPanels, { opacity: 1, y: 0 });
+            ScrollTrigger.create({
+                trigger: identityPanels[0],
                 start: 'top bottom-=50px',
-                toggleActions: 'play none none none',
-                once: true
-            },
-            opacity: 1, x: 0, y: 0,
-            duration: 0.8,
-            ease: 'power2.out'
+                once: true,
+                onEnter: () => {
+                    gsap.fromTo(identityPanels,
+                        { opacity: 0, y: 40 },
+                        { opacity: 1, y: 0, stagger: 0.2, duration: 0.7, ease: 'power2.out' }
+                    );
+                }
+            });
+        }
+    }
+
+    // ---- SERVIÇOS ----
+    if (document.querySelector('.service-card')) {
+        gsap.set('.service-card', { opacity: 1, y: 0 });
+        ScrollTrigger.create({
+            trigger: '.services-grid',
+            start: 'top bottom-=50px',
+            once: true,
+            onEnter: () => {
+                gsap.fromTo('.service-card',
+                    { opacity: 0, y: 60 },
+                    { opacity: 1, y: 0, stagger: 0.2, duration: 0.7, ease: 'back.out(1.2)' }
+                );
+            }
         });
-    });
+    }
 
-    // ---- CONTADORES DE STATS ----
-    const statEls = gsap.utils.toArray('.stat-value[data-target]');
-    console.log('Stat elements encontrados:', statEls.length);
+    // ---- PRODUTOS CARROSSEL ----
+    if (document.querySelector('.produto-card')) {
+        gsap.set('.produto-card', { opacity: 1, x: 0 });
+        ScrollTrigger.create({
+            trigger: '.produtos-destaque',
+            start: 'top bottom-=50px',
+            once: true,
+            onEnter: () => {
+                gsap.fromTo('.produto-card',
+                    { opacity: 0, x: 60 },
+                    { opacity: 1, x: 0, stagger: 0.15, duration: 0.8, ease: 'power2.out' }
+                );
+            }
+        });
+    }
 
-    statEls.forEach(el => {
+    // ---- STATS / CONTADORES ----
+    document.querySelectorAll('.stat-value[data-target]').forEach(el => {
+        gsap.set(el, { opacity: 1 });
         const target = parseInt(el.getAttribute('data-target'));
         const suffix = el.getAttribute('data-suffix') || '';
         const obj = { val: 0 };
@@ -250,58 +283,30 @@ function runGSAPAnimations() {
         });
     });
 
-    // ---- SERVICE CARDS ----
-    if (document.querySelector('.service-card')) {
-        gsap.set('.service-card', { opacity: 1, y: 0 });
+    // ---- PARCEIROS ----
+    document.querySelectorAll('.parceiros, #parceiros, .partners-section, .partners-track-wrapper, .partners-track').forEach(el => {
+        gsap.set(el, { clearProps: 'all' });
+        el.style.cssText += '; opacity:1 !important; visibility:visible !important;';
+    });
+
+    // ---- PÁGINAS DE PRODUTO: DIFERENCIAIS ----
+    const diferenciais = document.querySelectorAll(
+        '.diferencial, .diferencial-item, .product-feature, [class*="diferencial"], .feature-box'
+    );
+    if (diferenciais.length) {
+        gsap.set(diferenciais, { opacity: 1, y: 0 });
         ScrollTrigger.create({
-            trigger: '.services-grid',
+            trigger: diferenciais[0],
             start: 'top bottom-=50px',
             once: true,
             onEnter: () => {
-                gsap.fromTo('.service-card',
-                    { opacity: 0, y: 60 },
-                    { opacity: 1, y: 0, stagger: 0.2, duration: 0.7, ease: 'back.out(1.2)' }
+                gsap.fromTo(diferenciais,
+                    { opacity: 0, y: 40 },
+                    { opacity: 1, y: 0, stagger: 0.15, duration: 0.6, ease: 'power2.out' }
                 );
             }
         });
     }
-
-    // ---- IDENTITY PANELS ----
-    if (document.querySelector('.identity-grid')) {
-        gsap.from('.identity-panel', {
-            scrollTrigger: { trigger: '.identity-grid', start: 'top 80%' },
-            opacity: 0, y: 60, stagger: 0.2, duration: 0.7, ease: 'power2.out'
-        });
-    }
-
-    // ---- FEATURE LIST ----
-    if (document.querySelector('.feature-list')) {
-        gsap.from('.feature-list li', {
-            scrollTrigger: { trigger: '.feature-list', start: 'top 80%' },
-            opacity: 0, x: -30, stagger: 0.12, duration: 0.5, ease: 'power2.out'
-        });
-    }
-
-    // ---- PRODUTO CARDS ----
-    if (document.querySelector('.produto-card')) {
-        gsap.set('.produto-card', { opacity: 1, x: 0 });
-        gsap.from('.produto-card', {
-            scrollTrigger: {
-                trigger: '.produtos-destaque',
-                start: 'top bottom-=50px',
-                once: true
-            },
-            opacity: 0, x: 60, stagger: 0.15, duration: 0.8, ease: 'power2.out'
-        });
-    }
-
-    // ---- PARTNERS: proteger de gsap.set vazando para elementos de parceiros ----
-    document.querySelectorAll(
-        '.parceiros, #parceiros, .partners-section, .partners-track-wrapper, .partners-track'
-    ).forEach(el => {
-        el.style.cssText += '; opacity:1 !important; visibility:visible !important;';
-        gsap.set(el, { clearProps: 'all' });
-    });
 
     // ---- CARROSSEL DE PRODUTOS (dots + navegação) ----
     (function() {
