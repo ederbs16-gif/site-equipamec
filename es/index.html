@@ -69,33 +69,100 @@
 
     <main>
         <section class="hero" id="home">
-            <div class="hero-video-wrap">
-                <video class="hero-video" autoplay muted loop playsinline preload="auto">
-                    <source src="../assets/videos/hero_equipamec.webm" type="video/webm">
-                    <source src="../assets/videos/hero_equipamec.mp4" type="video/mp4">
-                </video>
-                <div class="hero-overlay"></div>
-                <div class="hero-watermark-cover"></div>
-            </div>
-            <div class="hero-content container">
-                <div class="hero-bar"></div>
-                <span class="hero-eyebrow">Tecnología Naval &amp; Offshore</span>
-                <h1 class="hero-title">
-                    Potencia Hidráulica para<br>
-                    <em>Donde Nadie Llega.</em>
-                </h1>
-                <p class="hero-subtitle">
-                    Equipos navales y offshore diseñados y fabricados en Caraguatatuba, Brasil.
-                    12 años impulsando operaciones donde el fallo no es una opción.
-                </p>
-                <div class="hero-buttons">
-                    <a href="#services" class="btn btn-primary">Nuestros Servicios</a>
-                    <a href="#about" class="btn btn-outline">Conozca Equipamec</a>
+
+            <!-- SLIDES -->
+            <div class="hero-slides" id="heroSlides">
+
+                <!-- Slide 1: Hidráulica / Equipamec -->
+                <div class="hero-slide active" data-slide="0">
+                    <div class="hero-video-wrap">
+                        <video class="hero-video" autoplay muted loop playsinline preload="auto">
+                            <source src="../assets/videos/hero_equipamec.webm" type="video/webm">
+                            <source src="../assets/videos/hero_equipamec.mp4" type="video/mp4">
+                        </video>
+                        <div class="hero-overlay"></div>
+                        <div class="hero-watermark-cover"></div>
+                    </div>
+                    <div class="hero-slide-content">
+                        <div class="hero-bar"></div>
+                        <span class="hero-eyebrow">Tecnología Naval &amp; Offshore</span>
+                        <h1 class="hero-title">Potencia Hidráulica para<br><em>Donde Nadie Llega.</em></h1>
+                        <p class="hero-subtitle">Equipos navales y offshore diseñados y fabricados en Caraguatatuba, Brasil. 15 años impulsando operaciones donde el fallo no es una opción.</p>
+                        <div class="hero-buttons">
+                            <a href="#produtos-destaque" class="btn btn-primary">Nuestros Productos</a>
+                            <a href="#contato" class="btn btn-outline">Hablar con Ingeniería</a>
+                        </div>
+                    </div>
                 </div>
+
+                <!-- Slide 2: Tornería -->
+                <div class="hero-slide" data-slide="1">
+                    <div class="hero-video-wrap">
+                        <video class="hero-video" muted loop playsinline preload="none">
+                            <source src="../assets/videos/hero_tornearia.webm" type="video/webm">
+                            <source src="../assets/videos/hero_tornearia.mp4" type="video/mp4">
+                        </video>
+                        <div class="hero-overlay"></div>
+                    </div>
+                    <div class="hero-slide-content">
+                        <div class="hero-bar"></div>
+                        <span class="hero-eyebrow">Tornería &amp; Mecanizado</span>
+                        <h1 class="hero-title">Precisión en el Detalle,<br><em>Confiabilidad en el Campo.</em></h1>
+                        <p class="hero-subtitle">Piezas y componentes mecanizados con tolerancias industriales para aplicaciones navales, offshore y portuarias.</p>
+                        <div class="hero-buttons">
+                            <a href="#produtos-destaque" class="btn btn-primary">Ver Productos</a>
+                            <a href="#contato" class="btn btn-outline">Solicitar Presupuesto</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 3: Calderería -->
+                <div class="hero-slide" data-slide="2">
+                    <div class="hero-video-wrap">
+                        <video class="hero-video" muted loop playsinline preload="none">
+                            <source src="../assets/videos/hero_caldeiraria.webm" type="video/webm">
+                            <source src="../assets/videos/hero_caldeiraria.mp4" type="video/mp4">
+                        </video>
+                        <div class="hero-overlay"></div>
+                    </div>
+                    <div class="hero-slide-content">
+                        <div class="hero-bar"></div>
+                        <span class="hero-eyebrow">Calderería &amp; Retrofit</span>
+                        <h1 class="hero-title">Estructuras que Sostienen<br><em>Operaciones Críticas.</em></h1>
+                        <p class="hero-subtitle">Fabricación de estructuras metálicas a medida y retrofit de generadores navales. De la especificación a la entrega, con trazabilidad técnica completa.</p>
+                        <div class="hero-buttons">
+                            <a href="#produtos-destaque" class="btn btn-primary">Ver Proyectos</a>
+                            <a href="#contato" class="btn btn-outline">Hablar con Ingeniería</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- /hero-slides -->
+
+            <!-- Navegación: dots -->
+            <div class="hero-dots" id="heroDots">
+                <button class="hero-dot active" data-goto="0" aria-label="Diapositiva 1"></button>
+                <button class="hero-dot" data-goto="1" aria-label="Diapositiva 2"></button>
+                <button class="hero-dot" data-goto="2" aria-label="Diapositiva 3"></button>
             </div>
+
+            <!-- Navegación: flechas -->
+            <button class="hero-nav hero-nav-prev" id="heroPrev" aria-label="Diapositiva anterior">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <polyline points="15 18 9 12 15 6"/>
+                </svg>
+            </button>
+            <button class="hero-nav hero-nav-next" id="heroNext" aria-label="Siguiente diapositiva">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <polyline points="9 18 15 12 9 6"/>
+                </svg>
+            </button>
+
+            <!-- Indicador de scroll -->
             <div class="hero-scroll-indicator">
                 <span></span>
             </div>
+
         </section>
 
         <!-- ===== PRODUCTOS DESTACADOS ===== -->

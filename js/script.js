@@ -182,44 +182,103 @@ document.addEventListener('DOMContentLoaded', () => {
 function runGSAPAnimations() {
     gsap.registerPlugin(ScrollTrigger);
 
-    // ---- HERO ENTRANCE ----
-    const heroBar = document.querySelector('.hero-bar');
-    if (heroBar) {
-        gsap.set('.hero-eyebrow, .hero-title, .hero-subtitle, .hero-buttons .btn', { opacity: 1, y: 0 });
+    // ---- HERO CARROSSEL ----
+    (function () {
+        const slides = document.querySelectorAll('.hero-slide');
+        const dots = document.querySelectorAll('.hero-dot');
+        if (!slides.length) return;
 
-        const loaderDelay = document.getElementById('page-loader') ? 1.3 : 0.3;
-        const heroTl = gsap.timeline({ delay: loaderDelay });
-        heroTl
-            .fromTo('.hero-bar',
-                { scaleY: 0, transformOrigin: 'top' },
-                { scaleY: 1, duration: 0.4, ease: 'power2.out' })
-            .fromTo('.hero-eyebrow',
-                { opacity: 0, y: 16 },
-                { opacity: 1, y: 0, duration: 0.45 },
-                '-=0.1')
-            .fromTo('.hero-title',
-                { opacity: 0, y: 40 },
-                { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' },
-                '-=0.2')
-            .fromTo('.hero-subtitle',
-                { opacity: 0, y: 20 },
-                { opacity: 1, y: 0, duration: 0.5 },
-                '-=0.3')
-            .fromTo('.hero-buttons .btn',
-                { opacity: 0, y: 20 },
-                { opacity: 1, y: 0, stagger: 0.15, duration: 0.4 },
-                '-=0.2');
+        let current = 0;
+        let autoplayTimer = null;
+        const INTERVAL = 7000;
 
+        // Garantir visibilidade imediata do conteúdo hero
+        document.querySelectorAll('.hero-eyebrow, .hero-title, .hero-subtitle, .hero-buttons, .hero-bar').forEach(el => {
+            el.style.opacity = '1';
+        });
+
+        function goToSlide(index) {
+            slides[current].classList.remove('active');
+            dots[current].classList.remove('active');
+
+            const prevVideo = slides[current].querySelector('.hero-video');
+            if (prevVideo) prevVideo.pause();
+
+            current = (index + slides.length) % slides.length;
+
+            slides[current].classList.add('active');
+            dots[current].classList.add('active');
+
+            const nextVideo = slides[current].querySelector('.hero-video');
+            if (nextVideo) nextVideo.play().catch(() => {});
+
+            const content = slides[current].querySelector('.hero-slide-content');
+            if (content && typeof gsap !== 'undefined') {
+                gsap.timeline()
+                    .fromTo(content.querySelector('.hero-bar'),
+                        { scaleY: 0, transformOrigin: 'top' },
+                        { scaleY: 1, opacity: 1, duration: 0.3, ease: 'power2.out' })
+                    .fromTo(content.querySelector('.hero-eyebrow'),
+                        { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.35 }, '-=0.05')
+                    .fromTo(content.querySelector('.hero-title'),
+                        { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.55, ease: 'power3.out' }, '-=0.15')
+                    .fromTo(content.querySelector('.hero-subtitle'),
+                        { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.4 }, '-=0.25')
+                    .fromTo(content.querySelectorAll('.hero-buttons .btn'),
+                        { opacity: 0, y: 14 }, { opacity: 1, y: 0, stagger: 0.12, duration: 0.35 }, '-=0.2');
+            }
+
+            resetAutoplay();
+        }
+
+        function resetAutoplay() {
+            clearInterval(autoplayTimer);
+            autoplayTimer = setInterval(() => goToSlide(current + 1), INTERVAL);
+        }
+
+        // Animação inicial do primeiro slide
+        const firstContent = slides[0].querySelector('.hero-slide-content');
+        if (firstContent && typeof gsap !== 'undefined') {
+            gsap.timeline({ delay: 1.3 })
+                .fromTo(firstContent.querySelector('.hero-bar'),
+                    { scaleY: 0, transformOrigin: 'top' },
+                    { scaleY: 1, opacity: 1, duration: 0.4, ease: 'power2.out' })
+                .fromTo(firstContent.querySelector('.hero-eyebrow'),
+                    { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.45 }, '-=0.1')
+                .fromTo(firstContent.querySelector('.hero-title'),
+                    { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }, '-=0.2')
+                .fromTo(firstContent.querySelector('.hero-subtitle'),
+                    { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5 }, '-=0.3')
+                .fromTo(firstContent.querySelectorAll('.hero-buttons .btn'),
+                    { opacity: 0, y: 20 }, { opacity: 1, y: 0, stagger: 0.15, duration: 0.4 }, '-=0.2');
+        }
+
+        // Fallback: forçar visibilidade após 3s se GSAP falhar
         setTimeout(() => {
             document.querySelectorAll(
-                '.hero-eyebrow, .hero-title, .hero-subtitle, .hero-buttons .btn, .hero-bar'
+                '.hero-slide.active .hero-eyebrow, .hero-slide.active .hero-title, .hero-slide.active .hero-subtitle, .hero-slide.active .hero-buttons'
             ).forEach(el => {
                 if (window.getComputedStyle(el).opacity === '0') {
-                    gsap.set(el, { opacity: 1, y: 0, scaleY: 1, clearProps: 'transform' });
+                    el.style.opacity = '1';
+                    el.style.transform = 'none';
                 }
             });
         }, 3000);
-    }
+
+        // Navegação
+        document.getElementById('heroPrev')?.addEventListener('click', () => goToSlide(current - 1));
+        document.getElementById('heroNext')?.addEventListener('click', () => goToSlide(current + 1));
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => goToSlide(parseInt(dot.getAttribute('data-goto'))));
+        });
+
+        // Pausar autoplay no hover
+        const heroEl = document.querySelector('.hero');
+        heroEl?.addEventListener('mouseenter', () => clearInterval(autoplayTimer));
+        heroEl?.addEventListener('mouseleave', () => resetAutoplay());
+
+        resetAutoplay();
+    })();
 
     // ---- SCROLL ANIMATIONS (slide-*) ----
     const slideEls = gsap.utils.toArray('[class*="slide-"]');

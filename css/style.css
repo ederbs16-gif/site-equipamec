@@ -1236,13 +1236,31 @@ body.js-loading .page-loader {
   }
 }
 
-/* ===== HERO VIDEO FULLSCREEN ===== */
+/* ===== HERO CARROSSEL ===== */
 .hero {
   position: relative;
   min-height: 100vh;
-  display: flex;
-  align-items: center;
   overflow: hidden;
+}
+
+.hero-slides {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 100vh;
+}
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1s ease;
+  pointer-events: none;
+}
+
+.hero-slide.active {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .hero-video-wrap {
@@ -1263,9 +1281,9 @@ body.js-loading .page-loader {
   inset: 0;
   background: linear-gradient(
     to right,
-    rgba(5, 20, 15, 0.85) 0%,
-    rgba(5, 20, 15, 0.55) 60%,
-    rgba(5, 20, 15, 0.3) 100%
+    rgba(5, 20, 15, 0.82) 0%,
+    rgba(5, 20, 15, 0.50) 60%,
+    rgba(5, 20, 15, 0.25) 100%
   );
 }
 
@@ -1275,19 +1293,18 @@ body.js-loading .page-loader {
   right: 0;
   width: 220px;
   height: 60px;
-  background: linear-gradient(
-    to top left,
-    rgba(5, 20, 15, 0.95) 0%,
-    transparent 100%
-  );
+  background: linear-gradient(to top left, rgba(5, 20, 15, 0.95) 0%, transparent 100%);
 }
 
-.hero-content {
+.hero-slide-content {
   position: relative;
-  z-index: 1;
-  padding-top: 120px;
-  padding-bottom: 80px;
-  max-width: 720px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 120px 6vw 80px;
+  max-width: 760px;
 }
 
 .hero-bar {
@@ -1297,6 +1314,7 @@ body.js-loading .page-loader {
   border-radius: 2px;
   margin-bottom: 24px;
   transform-origin: top;
+  opacity: 1;
 }
 
 .hero-eyebrow {
@@ -1307,15 +1325,17 @@ body.js-loading .page-loader {
   text-transform: uppercase;
   color: var(--color-accent-orange);
   margin-bottom: 16px;
+  opacity: 1;
 }
 
 .hero-title {
-  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-size: clamp(2.6rem, 5.5vw, 4.8rem);
   font-weight: 800;
   color: #fff;
   line-height: 1.1;
   letter-spacing: -0.03em;
   margin-bottom: 24px;
+  opacity: 1;
 }
 
 .hero-title em {
@@ -1324,34 +1344,84 @@ body.js-loading .page-loader {
 }
 
 .hero-subtitle {
-  font-size: 1.05rem;
+  font-size: 1rem;
   color: rgba(255, 255, 255, 0.65);
   line-height: 1.7;
   max-width: 520px;
   margin-bottom: 40px;
+  opacity: 1;
 }
 
 .hero-buttons {
   display: flex;
   gap: 16px;
   flex-wrap: wrap;
-}
-
-/* Garantia: hero content sempre visível independente de JS/GSAP */
-.hero-bar,
-.hero-eyebrow,
-.hero-title,
-.hero-subtitle,
-.hero-buttons {
   opacity: 1;
 }
 
-.hero-scroll-indicator {
+/* Dots */
+.hero-dots {
   position: absolute;
   bottom: 32px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 1;
+  z-index: 10;
+  display: flex;
+  gap: 10px;
+}
+
+.hero-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+  padding: 0;
+}
+
+.hero-dot.active {
+  background: var(--color-accent-orange);
+  transform: scale(1.4);
+}
+
+/* Setas de navegação */
+.hero-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 48px;
+  height: 48px;
+  background: rgba(5, 20, 15, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: background 0.2s ease;
+  border-radius: 0;
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+}
+
+.hero-nav:hover {
+  background: var(--color-accent-orange);
+  border-color: var(--color-accent-orange);
+}
+
+.hero-nav svg { width: 20px; height: 20px; }
+.hero-nav-prev { left: 24px; }
+.hero-nav-next { right: 24px; }
+
+/* Scroll indicator */
+.hero-scroll-indicator {
+  position: absolute;
+  bottom: 32px;
+  right: 40px;
+  z-index: 10;
 }
 
 .hero-scroll-indicator span {
@@ -1385,17 +1455,9 @@ body.js-loading .page-loader {
   .hero {
     min-height: 100svh;
   }
-  .hero-video {
-    object-position: 60% center;
-  }
-  .hero-content {
-    padding-top: 100px;
-    padding-bottom: 60px;
-    max-width: 100%;
-  }
-  .hero-title {
-    font-size: clamp(2rem, 8vw, 3rem);
-  }
+  .hero-nav { display: none; }
+  .hero-slide-content { padding: 100px 24px 80px; }
+  .hero-title { font-size: clamp(2rem, 8vw, 3rem); }
 }
 
 /* ===== CARD ICON SVG SIZING ===== */

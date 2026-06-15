@@ -69,33 +69,100 @@
 
     <main>
         <section class="hero" id="home">
-            <div class="hero-video-wrap">
-                <video class="hero-video" autoplay muted loop playsinline preload="auto">
-                    <source src="../assets/videos/hero_equipamec.webm" type="video/webm">
-                    <source src="../assets/videos/hero_equipamec.mp4" type="video/mp4">
-                </video>
-                <div class="hero-overlay"></div>
-                <div class="hero-watermark-cover"></div>
-            </div>
-            <div class="hero-content container">
-                <div class="hero-bar"></div>
-                <span class="hero-eyebrow">Naval &amp; Offshore Technology</span>
-                <h1 class="hero-title">
-                    Hydraulic Power That Goes<br>
-                    <em>Where No One Else Does.</em>
-                </h1>
-                <p class="hero-subtitle">
-                    Naval and offshore equipment designed and built in Caraguatatuba, Brazil.
-                    12 years powering operations where failure is not an option.
-                </p>
-                <div class="hero-buttons">
-                    <a href="#services" class="btn btn-primary">Our Services</a>
-                    <a href="#about" class="btn btn-outline">About Equipamec</a>
+
+            <!-- SLIDES -->
+            <div class="hero-slides" id="heroSlides">
+
+                <!-- Slide 1: Hydraulic / Equipamec -->
+                <div class="hero-slide active" data-slide="0">
+                    <div class="hero-video-wrap">
+                        <video class="hero-video" autoplay muted loop playsinline preload="auto">
+                            <source src="../assets/videos/hero_equipamec.webm" type="video/webm">
+                            <source src="../assets/videos/hero_equipamec.mp4" type="video/mp4">
+                        </video>
+                        <div class="hero-overlay"></div>
+                        <div class="hero-watermark-cover"></div>
+                    </div>
+                    <div class="hero-slide-content">
+                        <div class="hero-bar"></div>
+                        <span class="hero-eyebrow">Naval &amp; Offshore Technology</span>
+                        <h1 class="hero-title">Hydraulic Power That Goes<br><em>Where No One Else Does.</em></h1>
+                        <p class="hero-subtitle">Naval and offshore equipment designed and built in Caraguatatuba, Brazil. 15 years powering operations where failure is not an option.</p>
+                        <div class="hero-buttons">
+                            <a href="#produtos-destaque" class="btn btn-primary">Our Products</a>
+                            <a href="#contato" class="btn btn-outline">Talk to Engineering</a>
+                        </div>
+                    </div>
                 </div>
+
+                <!-- Slide 2: Machining -->
+                <div class="hero-slide" data-slide="1">
+                    <div class="hero-video-wrap">
+                        <video class="hero-video" muted loop playsinline preload="none">
+                            <source src="../assets/videos/hero_tornearia.webm" type="video/webm">
+                            <source src="../assets/videos/hero_tornearia.mp4" type="video/mp4">
+                        </video>
+                        <div class="hero-overlay"></div>
+                    </div>
+                    <div class="hero-slide-content">
+                        <div class="hero-bar"></div>
+                        <span class="hero-eyebrow">Machining &amp; Turning</span>
+                        <h1 class="hero-title">Precision in Detail,<br><em>Reliability in the Field.</em></h1>
+                        <p class="hero-subtitle">Machined parts and components with industrial tolerances for naval, offshore and port applications.</p>
+                        <div class="hero-buttons">
+                            <a href="#produtos-destaque" class="btn btn-primary">View Products</a>
+                            <a href="#contato" class="btn btn-outline">Request a Quote</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 3: Boilermaking -->
+                <div class="hero-slide" data-slide="2">
+                    <div class="hero-video-wrap">
+                        <video class="hero-video" muted loop playsinline preload="none">
+                            <source src="../assets/videos/hero_caldeiraria.webm" type="video/webm">
+                            <source src="../assets/videos/hero_caldeiraria.mp4" type="video/mp4">
+                        </video>
+                        <div class="hero-overlay"></div>
+                    </div>
+                    <div class="hero-slide-content">
+                        <div class="hero-bar"></div>
+                        <span class="hero-eyebrow">Boilermaking &amp; Retrofit</span>
+                        <h1 class="hero-title">Structures that Sustain<br><em>Critical Operations.</em></h1>
+                        <p class="hero-subtitle">Custom metal structures and naval generator retrofits. From specification to delivery, with full technical traceability.</p>
+                        <div class="hero-buttons">
+                            <a href="#produtos-destaque" class="btn btn-primary">View Projects</a>
+                            <a href="#contato" class="btn btn-outline">Talk to Engineering</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- /hero-slides -->
+
+            <!-- Navigation: dots -->
+            <div class="hero-dots" id="heroDots">
+                <button class="hero-dot active" data-goto="0" aria-label="Slide 1"></button>
+                <button class="hero-dot" data-goto="1" aria-label="Slide 2"></button>
+                <button class="hero-dot" data-goto="2" aria-label="Slide 3"></button>
             </div>
+
+            <!-- Navigation: arrows -->
+            <button class="hero-nav hero-nav-prev" id="heroPrev" aria-label="Previous slide">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <polyline points="15 18 9 12 15 6"/>
+                </svg>
+            </button>
+            <button class="hero-nav hero-nav-next" id="heroNext" aria-label="Next slide">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <polyline points="9 18 15 12 9 6"/>
+                </svg>
+            </button>
+
+            <!-- Scroll indicator -->
             <div class="hero-scroll-indicator">
                 <span></span>
             </div>
+
         </section>
 
         <!-- ===== PRODUTOS DESTAQUE ===== -->
