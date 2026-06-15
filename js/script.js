@@ -197,6 +197,26 @@ function runGSAPAnimations() {
             el.style.opacity = '1';
         });
 
+        function safePlay(video) {
+            if (!video) return;
+            video.muted = true;
+            const p = video.play();
+            if (p !== undefined) {
+                p.catch(() => {
+                    const retry = () => {
+                        video.play().catch(() => {});
+                        document.removeEventListener('click', retry);
+                        document.removeEventListener('touchstart', retry);
+                    };
+                    document.addEventListener('click', retry, { once: true });
+                    document.addEventListener('touchstart', retry, { once: true });
+                });
+            }
+        }
+
+        // Iniciar vídeo do primeiro slide
+        safePlay(slides[0].querySelector('.hero-video'));
+
         function goToSlide(index) {
             slides[current].classList.remove('active');
             dots[current].classList.remove('active');
@@ -210,7 +230,7 @@ function runGSAPAnimations() {
             dots[current].classList.add('active');
 
             const nextVideo = slides[current].querySelector('.hero-video');
-            if (nextVideo) nextVideo.play().catch(() => {});
+            safePlay(nextVideo);
 
             const content = slides[current].querySelector('.hero-slide-content');
             if (content && typeof gsap !== 'undefined') {

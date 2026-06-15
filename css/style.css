@@ -1253,13 +1253,17 @@ body.js-loading .page-loader {
 .hero-slide {
   position: absolute;
   inset: 0;
+  width: 100%;
+  height: 100%;
   opacity: 0;
+  visibility: hidden;
   transition: opacity 1s ease;
   pointer-events: none;
 }
 
 .hero-slide.active {
   opacity: 1;
+  visibility: visible;
   pointer-events: auto;
 }
 
@@ -1456,8 +1460,14 @@ body.js-loading .page-loader {
     min-height: 100svh;
   }
   .hero-nav { display: none; }
-  .hero-slide-content { padding: 100px 24px 80px; }
-  .hero-title { font-size: clamp(2rem, 8vw, 3rem); }
+  .hero-slide-content {
+    padding: 100px 20px 80px 20px;
+    max-width: 100%;
+  }
+  .hero-title {
+    font-size: clamp(1.8rem, 7vw, 2.8rem);
+    word-break: break-word;
+  }
 }
 
 /* ===== CARD ICON SVG SIZING ===== */
