@@ -185,13 +185,40 @@ function runGSAPAnimations() {
     // ---- HERO ENTRANCE ----
     const heroBar = document.querySelector('.hero-bar');
     if (heroBar) {
-        const heroTl = gsap.timeline({ delay: 1.4 });
+        gsap.set('.hero-eyebrow, .hero-title, .hero-subtitle, .hero-buttons .btn', { opacity: 1, y: 0 });
+
+        const loaderDelay = document.getElementById('page-loader') ? 1.3 : 0.3;
+        const heroTl = gsap.timeline({ delay: loaderDelay });
         heroTl
-            .from('.hero-bar', { scaleY: 0, transformOrigin: 'top', duration: 0.4, ease: 'power2.out' })
-            .from('.hero-eyebrow', { opacity: 0, y: 16, duration: 0.45 }, '-=0.1')
-            .from('.hero-title', { opacity: 0, y: 40, duration: 0.7, ease: 'power3.out' }, '-=0.2')
-            .from('.hero-subtitle', { opacity: 0, y: 20, duration: 0.5 }, '-=0.3')
-            .from('.hero-buttons .btn', { opacity: 0, y: 20, stagger: 0.15, duration: 0.4 }, '-=0.2');
+            .fromTo('.hero-bar',
+                { scaleY: 0, transformOrigin: 'top' },
+                { scaleY: 1, duration: 0.4, ease: 'power2.out' })
+            .fromTo('.hero-eyebrow',
+                { opacity: 0, y: 16 },
+                { opacity: 1, y: 0, duration: 0.45 },
+                '-=0.1')
+            .fromTo('.hero-title',
+                { opacity: 0, y: 40 },
+                { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' },
+                '-=0.2')
+            .fromTo('.hero-subtitle',
+                { opacity: 0, y: 20 },
+                { opacity: 1, y: 0, duration: 0.5 },
+                '-=0.3')
+            .fromTo('.hero-buttons .btn',
+                { opacity: 0, y: 20 },
+                { opacity: 1, y: 0, stagger: 0.15, duration: 0.4 },
+                '-=0.2');
+
+        setTimeout(() => {
+            document.querySelectorAll(
+                '.hero-eyebrow, .hero-title, .hero-subtitle, .hero-buttons .btn, .hero-bar'
+            ).forEach(el => {
+                if (window.getComputedStyle(el).opacity === '0') {
+                    gsap.set(el, { opacity: 1, y: 0, scaleY: 1, clearProps: 'transform' });
+                }
+            });
+        }, 3000);
     }
 
     // ---- SCROLL ANIMATIONS (slide-*) ----
