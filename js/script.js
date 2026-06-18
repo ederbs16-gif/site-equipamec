@@ -546,3 +546,111 @@ if (document.readyState === 'complete') {
 } else {
     window.addEventListener('load', runGSAPAnimations);
 }
+
+/* ===================================================
+   PORTFOLIO CAROUSEL com FILTRO POR CATEGORIA
+   =================================================== */
+
+(function () {
+    const section = document.querySelector('.portfolio-carousel-section');
+    if (!section) return;
+
+    const allSlides  = Array.from(section.querySelectorAll('.pcarousel-slide'));
+    const prevBtn    = section.querySelector('.pcarousel-prev');
+    const nextBtn    = section.querySelector('.pcarousel-next');
+    const dotsWrap   = section.querySelector('#pcarousel-dots');
+    const filterBtns = document.querySelectorAll('.portfolio-cat-btn');
+
+    let visibleSlides = [...allSlides];
+    let currentIdx    = 0;
+
+    function buildDots() {
+        dotsWrap.innerHTML = '';
+        visibleSlides.forEach((_, i) => {
+            const dot = document.createElement('button');
+            dot.className = 'pcarousel-dot' + (i === 0 ? ' active' : '');
+            dot.setAttribute('aria-label', `Produto ${i + 1}`);
+            dot.addEventListener('click', () => goTo(i));
+            dotsWrap.appendChild(dot);
+        });
+    }
+
+    function updateCounters() {
+        const total = visibleSlides.length;
+        visibleSlides.forEach((slide, i) => {
+            const counterEl = slide.querySelector('.pcs-counter');
+            if (counterEl) {
+                const num = String(i + 1).padStart(2, '0');
+                const tot = String(total).padStart(2, '0');
+                counterEl.innerHTML = `${num} / <span class="pcs-total">${tot}</span>`;
+            }
+        });
+    }
+
+    function goTo(idx) {
+        if (visibleSlides[currentIdx]) {
+            visibleSlides[currentIdx].classList.remove('active');
+        }
+        currentIdx = Math.max(0, Math.min(idx, visibleSlides.length - 1));
+        if (visibleSlides[currentIdx]) {
+            visibleSlides[currentIdx].classList.add('active');
+        }
+        dotsWrap.querySelectorAll('.pcarousel-dot').forEach((dot, i) => {
+            dot.classList.toggle('active', i === currentIdx);
+        });
+    }
+
+    function applyFilter(cat) {
+        allSlides.forEach(s => {
+            s.classList.remove('active');
+            s.style.display = 'none';
+        });
+
+        visibleSlides = cat === 'all'
+            ? [...allSlides]
+            : allSlides.filter(s => s.dataset.cat === cat);
+
+        visibleSlides.forEach(s => { s.style.display = ''; });
+
+        currentIdx = 0;
+        updateCounters();
+        buildDots();
+        goTo(0);
+    }
+
+    allSlides.forEach(s => { s.style.display = ''; });
+    applyFilter('all');
+
+    prevBtn.addEventListener('click', () => {
+        goTo(currentIdx - 1 < 0 ? visibleSlides.length - 1 : currentIdx - 1);
+    });
+
+    nextBtn.addEventListener('click', () => {
+        goTo(currentIdx + 1 >= visibleSlides.length ? 0 : currentIdx + 1);
+    });
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            applyFilter(btn.dataset.cat);
+        });
+    });
+
+    document.addEventListener('keydown', e => {
+        if (!section.closest('body')) return;
+        if (e.key === 'ArrowLeft')  goTo(currentIdx - 1 < 0 ? visibleSlides.length - 1 : currentIdx - 1);
+        if (e.key === 'ArrowRight') goTo(currentIdx + 1 >= visibleSlides.length ? 0 : currentIdx + 1);
+    });
+
+    let touchStartX = 0;
+    section.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+    section.addEventListener('touchend', e => {
+        const diff = touchStartX - e.changedTouches[0].screenX;
+        if (Math.abs(diff) > 40) {
+            diff > 0
+                ? goTo(currentIdx + 1 >= visibleSlides.length ? 0 : currentIdx + 1)
+                : goTo(currentIdx - 1 < 0 ? visibleSlides.length - 1 : currentIdx - 1);
+        }
+    }, { passive: true });
+})();
