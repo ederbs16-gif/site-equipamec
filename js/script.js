@@ -174,6 +174,66 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1200);
     }
 
+    // --- WhatsApp Flutuante ---
+    (function () {
+        const floatBtn = document.getElementById('waFloatBtn');
+        const popup    = document.getElementById('waFormPopup');
+        const closeBtn = document.getElementById('waFormClose');
+        const form     = document.getElementById('waContactForm');
+
+        if (!floatBtn || !popup) return;
+
+        const WA_NUMBER = '5512991654319';
+
+        function openPopup() {
+            popup.classList.add('open');
+            popup.setAttribute('aria-hidden', 'false');
+            popup.querySelector('input').focus();
+        }
+
+        function closePopup() {
+            popup.classList.remove('open');
+            popup.setAttribute('aria-hidden', 'true');
+        }
+
+        floatBtn.addEventListener('click', () => {
+            popup.classList.contains('open') ? closePopup() : openPopup();
+        });
+
+        closeBtn.addEventListener('click', closePopup);
+
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.wa-float')) closePopup();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closePopup();
+        });
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const data     = new FormData(form);
+            const nome     = (data.get('wa_nome')     || '').trim();
+            const empresa  = (data.get('wa_empresa')  || '').trim();
+            const telefone = (data.get('wa_telefone') || '').trim();
+            const email    = (data.get('wa_email')    || '').trim();
+
+            const lines = [
+                'Olá! Vim pelo site da Equipamec e gostaria de mais informações.',
+                '',
+                nome     ? `Nome: ${nome}`         : '',
+                empresa  ? `Empresa: ${empresa}`   : '',
+                telefone ? `Telefone: ${telefone}` : '',
+                email    ? `E-mail: ${email}`       : '',
+            ].filter(l => l !== null);
+
+            const msg = lines.join('\n').trim();
+            window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
+            form.reset();
+            closePopup();
+        });
+    })();
+
 });
 
 // ================================================================
