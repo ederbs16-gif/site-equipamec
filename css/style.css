@@ -1896,7 +1896,7 @@ body.js-loading .page-loader {
   right: 28px;
   z-index: 9999;
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   align-items: flex-end;
   gap: 12px;
   transform: translateZ(0);
