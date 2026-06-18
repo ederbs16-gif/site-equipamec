@@ -39,6 +39,9 @@ body {
   background-color: var(--color-primary-dark);
   color: var(--color-text-light);
   line-height: 1.6;
+}
+
+.hero, .hero-slides, .produtos-showcase, .produtos-destaque {
   overflow-x: hidden;
 }
 
@@ -1896,6 +1899,8 @@ body.js-loading .page-loader {
   flex-direction: column;
   align-items: flex-end;
   gap: 12px;
+  transform: translateZ(0);
+  will-change: transform;
 }
 
 .wa-float-btn {
