@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-
+    
     <meta charset="UTF-8">
     <meta name="description" content="Catálogo de productos Equipamec — Unidades hidráulicas, máquinas de limpieza y accesorios para uso naval e industrial.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,13 +10,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
-
-    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
-    <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="../assets/android-chrome-192x192.png">
-    <link rel="manifest" href="../assets/site.webmanifest">
+    
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 </head>
 <body>
     <header class="navbar">
@@ -65,232 +60,133 @@
         </div>
     </header>
 
-    <main>
-        <section class="portfolio-hero">
-          <div class="portfolio-hero-bg"></div>
-          <div class="portfolio-hero-overlay"></div>
-          <div class="container portfolio-hero-content">
-            <span class="section-eyebrow">Línea Completa</span>
-            <h1 class="portfolio-hero-title">NUESTROS<br><em>PRODUCTOS</em></h1>
-            <p class="portfolio-hero-sub">Equipos diseñados y fabricados para operaciones donde el fallo no es una opción.</p>
-          </div>
-          <div class="portfolio-cat-nav">
-            <button class="portfolio-cat-btn active" data-cat="all">Todos</button>
-            <button class="portfolio-cat-btn" data-cat="hpu">Unidades Hidráulicas</button>
-            <button class="portfolio-cat-btn" data-cat="cleaning">Máquinas de Limpieza</button>
-            <button class="portfolio-cat-btn" data-cat="accessories">Accesorios</button>
-          </div>
-        </section>
-
-        <section class="portfolio-carousel-section" id="portfolio-carousel">
-
-          <button class="pcarousel-arrow pcarousel-prev" aria-label="Anterior">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <polyline points="15 18 9 12 15 6"/>
-            </svg>
-          </button>
-
-          <button class="pcarousel-arrow pcarousel-next" aria-label="Siguiente">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <polyline points="9 18 15 12 9 6"/>
-            </svg>
-          </button>
-
-          <div class="pcarousel-track">
-
-            <div class="pcarousel-slide active" data-cat="hpu" data-index="0">
-              <div class="pcs-bg">
-                <img src="../assets/CH1S/ch1s_1.jpg" alt="CH1S" loading="lazy">
-                <div class="pcs-bg-overlay"></div>
-              </div>
-              <div class="pcs-content">
-                <div class="pcs-meta">
-                  <span class="pcs-category">Unidades Hidráulicas</span>
-                  <span class="pcs-counter">01 / <span class="pcs-total">10</span></span>
+    <main style="padding-top: 120px;">
+        <section class="section">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2>Nuestros Productos</h2>
+                    <p>Conozca nuestra infraestructura. Arrastre o pause con el ratón.</p>
                 </div>
-                <h2 class="pcs-title">CH1S</h2>
-                <p class="pcs-desc">Unidad hidráulica a combustión de 1 toma. Compacta, robusta y diseñada para operaciones navales en espacios reducidos.</p>
-                <div class="pcs-actions">
-                  <a href="produto_ch1s.html" class="btn btn-primary">Ver Especificaciones</a>
-                  <a href="../assets/catalogos/CH1S_25HP.pdf" class="btn btn-outline" download>Catálogo PDF</a>
+                
+                <div class="portfolio-filters text-center" style="margin-bottom: 2rem;">
+                    <button class="filter-btn active" data-filter="*">Todos</button>
+                    <button class="filter-btn" data-filter=".cat_hpu">Unidades Hidráulicas</button>
+                    <button class="filter-btn" data-filter=".cat_cleaning">Máquinas de Limpieza</button>
+                    <button class="filter-btn" data-filter=".cat_accessories">Accesorios</button>
                 </div>
-              </div>
+
+                <div id="portfolio-grid" class="portfolio-standard-grid">
+                    
+                    <div class="gallery-item cat_hpu">
+                        <a href="../assets/CH1S/3d_model.png" class="glightbox" data-gallery="gallery-ch1s" data-title="CH1S">
+                            <img src="../assets/CH1S/3d_model.png" alt="CH1S" loading="lazy">
+                            <div class="gallery-overlay">
+                                <div class="overlay-content">
+                                    <h4>CH1S</h4>
+                                    <p>Unidades Hidráulicas</p>
+                                </div>
+                            </div>
+                        </a>
+                        <!-- Hidden images -->
+                                        <a href="../assets/CH1S/ch1s_1.jpg" class="glightbox" data-gallery="gallery-ch1s" style="display: none;"></a>                        <a href="../assets/CH1S/ch1s_2.jpg" class="glightbox" data-gallery="gallery-ch1s" style="display: none;"></a>                        <a href="../assets/CH1S/ch1s_3.jpeg" class="glightbox" data-gallery="gallery-ch1s" style="display: none;"></a>                        <a href="../assets/CH1S/ch1s_4.jpeg" class="glightbox" data-gallery="gallery-ch1s" style="display: none;"></a>                        <a href="../assets/CH1S/ch1s_5.jpeg" class="glightbox" data-gallery="gallery-ch1s" style="display: none;"></a>                        <a href="../assets/CH1S/ch1s_6.jpeg" class="glightbox" data-gallery="gallery-ch1s" style="display: none;"></a>                        <a href="../assets/CH1S/ch1s_7.jpeg" class="glightbox" data-gallery="gallery-ch1s" style="display: none;"></a>                    </div>
+                    <div class="gallery-item cat_hpu">
+                        <a href="../assets/CH2S/ch2s_1.jpeg" class="glightbox" data-gallery="gallery-ch2s" data-title="CH2S">
+                            <img src="../assets/CH2S/ch2s_1.jpeg" alt="CH2S" loading="lazy">
+                            <div class="gallery-overlay">
+                                <div class="overlay-content">
+                                    <h4>CH2S</h4>
+                                    <p>Unidades Hidráulicas</p>
+                                </div>
+                            </div>
+                        </a>
+                        <!-- Hidden images -->
+                                        <a href="../assets/CH2S/ch2s_2.jpeg" class="glightbox" data-gallery="gallery-ch2s" style="display: none;"></a>                        <a href="../assets/CH2S/ch2s_3.jpg" class="glightbox" data-gallery="gallery-ch2s" style="display: none;"></a>                        <a href="../assets/CH2S/ch2s_4.jpg" class="glightbox" data-gallery="gallery-ch2s" style="display: none;"></a>                        <a href="../assets/CH2S/ch2s_5.jpg" class="glightbox" data-gallery="gallery-ch2s" style="display: none;"></a>                        <a href="../assets/CH2S/ch2s_6.jpg" class="glightbox" data-gallery="gallery-ch2s" style="display: none;"></a>                        <a href="../assets/CH2S/ch2s_7.png" class="glightbox" data-gallery="gallery-ch2s" style="display: none;"></a>                        <a href="../assets/CH2S/ch2s_8.jpeg" class="glightbox" data-gallery="gallery-ch2s" style="display: none;"></a>                    </div>
+                    <div class="gallery-item cat_hpu">
+                        <a href="../assets/CH3SD/ch3sd_1.jpg" class="glightbox" data-gallery="gallery-ch3sd" data-title="CH3SD">
+                            <img src="../assets/CH3SD/ch3sd_1.jpg" alt="CH3SD" loading="lazy">
+                            <div class="gallery-overlay">
+                                <div class="overlay-content">
+                                    <h4>CH3SD</h4>
+                                    <p>Unidades Hidráulicas</p>
+                                </div>
+                            </div>
+                        </a>
+                        <!-- Hidden images -->
+                                        <a href="../assets/CH3SD/ch3sd_2.jpg" class="glightbox" data-gallery="gallery-ch3sd" style="display: none;"></a>                        <a href="../assets/CH3SD/ch3sd_3.jpg" class="glightbox" data-gallery="gallery-ch3sd" style="display: none;"></a>                        <a href="../assets/CH3SD/ch3sd_4.jpg" class="glightbox" data-gallery="gallery-ch3sd" style="display: none;"></a>                        <a href="../assets/CH3SD/ch3sd_5.jpeg" class="glightbox" data-gallery="gallery-ch3sd" style="display: none;"></a>                        <a href="../assets/CH3SD/ch3sd_6.png" class="glightbox" data-gallery="gallery-ch3sd" style="display: none;"></a>                        <a href="../assets/CH3SD/ch3sd_7.png" class="glightbox" data-gallery="gallery-ch3sd" style="display: none;"></a>                    </div>
+                    <div class="gallery-item cat_hpu">
+                        <a href="../assets/CHE2S/che2s_1.jpeg" class="glightbox" data-gallery="gallery-che2s" data-title="CHE2S">
+                            <img src="../assets/CHE2S/che2s_1.jpeg" alt="CHE2S" loading="lazy">
+                            <div class="gallery-overlay">
+                                <div class="overlay-content">
+                                    <h4>CHE2S</h4>
+                                    <p>Unidades Hidráulicas</p>
+                                </div>
+                            </div>
+                        </a>
+                        <!-- Hidden images -->
+                                        <a href="../assets/CHE2S/che2s_2.jpeg" class="glightbox" data-gallery="gallery-che2s" style="display: none;"></a>                        <a href="../assets/CHE2S/che2s_3.jpeg" class="glightbox" data-gallery="gallery-che2s" style="display: none;"></a>                        <a href="../assets/CHE2S/che2s_4.jpeg" class="glightbox" data-gallery="gallery-che2s" style="display: none;"></a>                        <a href="../assets/CHE2S/che2s_5.jpg" class="glightbox" data-gallery="gallery-che2s" style="display: none;"></a>                        <a href="../assets/CHE2S/che2s_6.png" class="glightbox" data-gallery="gallery-che2s" style="display: none;"></a>                    </div>
+                    <div class="gallery-item cat_cleaning">
+                        <a href="../assets/hpj40/hpj40_1.png" class="glightbox" data-gallery="gallery-hpj40" data-title="HPJ40">
+                            <img src="../assets/hpj40/hpj40_1.png" alt="HPJ40" loading="lazy">
+                            <div class="gallery-overlay">
+                                <div class="overlay-content">
+                                    <h4>HPJ40</h4>
+                                    <p>Máquinas de Limpieza</p>
+                                </div>
+                            </div>
+                        </a>
+                        <!-- Hidden images -->
+                                        <a href="../assets/hpj40/hpj40_2.jpeg" class="glightbox" data-gallery="gallery-hpj40" style="display: none;"></a>                        <a href="../assets/hpj40/hpj40_3.jpeg" class="glightbox" data-gallery="gallery-hpj40" style="display: none;"></a>                        <a href="../assets/hpj40/hpj40_4.jpeg" class="glightbox" data-gallery="gallery-hpj40" style="display: none;"></a>                    </div>
+                    <div class="gallery-item cat_cleaning">
+                        <a href="../assets/hpj41/hpj41_1.png" class="glightbox" data-gallery="gallery-hpj41" data-title="HPJ41">
+                            <img src="../assets/hpj41/hpj41_1.png" alt="HPJ41" loading="lazy">
+                            <div class="gallery-overlay">
+                                <div class="overlay-content">
+                                    <h4>HPJ41</h4>
+                                    <p>Máquinas de Limpieza</p>
+                                </div>
+                            </div>
+                        </a>
+                        <!-- Hidden images -->
+                                        <a href="../assets/hpj41/hpj41_2.png" class="glightbox" data-gallery="gallery-hpj41" style="display: none;"></a>                        <a href="../assets/hpj41/hpj41_3.png" class="glightbox" data-gallery="gallery-hpj41" style="display: none;"></a>                        <a href="../assets/hpj41/hpj41_4.jpg" class="glightbox" data-gallery="gallery-hpj41" style="display: none;"></a>                        <a href="../assets/hpj41/hpj41_5.jpg" class="glightbox" data-gallery="gallery-hpj41" style="display: none;"></a>                        <a href="../assets/hpj41/hpj41_6.jpg" class="glightbox" data-gallery="gallery-hpj41" style="display: none;"></a>                        <a href="../assets/hpj41/hpj41_7.jpg" class="glightbox" data-gallery="gallery-hpj41" style="display: none;"></a>                    </div>
+                    <div class="gallery-item cat_cleaning">
+                        <a href="../assets/hpj25/hpj25_1.png" class="glightbox" data-gallery="gallery-hpj25" data-title="HPJ25">
+                            <img src="../assets/hpj25/hpj25_1.png" alt="HPJ25" loading="lazy">
+                            <div class="gallery-overlay">
+                                <div class="overlay-content">
+                                    <h4>HPJ25</h4>
+                                    <p>Máquinas de Limpieza</p>
+                                </div>
+                            </div>
+                        </a>
+                        <!-- Hidden images -->
+                                        <a href="../assets/hpj25/hpj25_2.png" class="glightbox" data-gallery="gallery-hpj25" style="display: none;"></a>                        <a href="../assets/hpj25/hpj25_3.jpeg" class="glightbox" data-gallery="gallery-hpj25" style="display: none;"></a>                        <a href="../assets/hpj25/hpj25_4.jpeg" class="glightbox" data-gallery="gallery-hpj25" style="display: none;"></a>                        <a href="../assets/hpj25/hpj25_5.jpeg" class="glightbox" data-gallery="gallery-hpj25" style="display: none;"></a>                    </div>
+                    <div class="gallery-item cat_accessories">
+                        <a href="../assets/mangote/mangote_1.png" class="glightbox" data-gallery="gallery-mangote" data-title="Mangotes">
+                            <img src="../assets/mangote/mangote_1.png" alt="Mangotes" loading="lazy">
+                            <div class="gallery-overlay">
+                                <div class="overlay-content">
+                                    <h4>Mangotes</h4>
+                                    <p>Accesorios</p>
+                                </div>
+                            </div>
+                        </a>
+                        <!-- Hidden images -->
+                                        <a href="../assets/mangote/mangote_2.png" class="glightbox" data-gallery="gallery-mangote" style="display: none;"></a>                        <a href="../assets/mangote/mangote_3.png" class="glightbox" data-gallery="gallery-mangote" style="display: none;"></a>                        <a href="../assets/mangote/mangote_4.jpeg" class="glightbox" data-gallery="gallery-mangote" style="display: none;"></a>                        <a href="../assets/mangote/mangote_5.jpeg" class="glightbox" data-gallery="gallery-mangote" style="display: none;"></a>                        <a href="../assets/mangote/mangote_6.jpeg" class="glightbox" data-gallery="gallery-mangote" style="display: none;"></a>                    </div>
+                    <div class="gallery-item cat_accessories">
+                        <a href="../assets/escovas/escovas_1.png" class="glightbox" data-gallery="gallery-escovas" data-title="Escovas">
+                            <img src="../assets/escovas/escovas_1.png" alt="Escovas" loading="lazy">
+                            <div class="gallery-overlay">
+                                <div class="overlay-content">
+                                    <h4>Escovas</h4>
+                                    <p>Accesorios</p>
+                                </div>
+                            </div>
+                        </a>
+                        <!-- Hidden images -->
+                                        <a href="../assets/escovas/escovas_2.png" class="glightbox" data-gallery="gallery-escovas" style="display: none;"></a>                        <a href="../assets/escovas/escovas_3.png" class="glightbox" data-gallery="gallery-escovas" style="display: none;"></a>                        <a href="../assets/escovas/escovas_4.png" class="glightbox" data-gallery="gallery-escovas" style="display: none;"></a>                        <a href="../assets/escovas/escovas_5.jpeg" class="glightbox" data-gallery="gallery-escovas" style="display: none;"></a>                    </div>
+                </div>
             </div>
-
-            <div class="pcarousel-slide" data-cat="hpu" data-index="1">
-              <div class="pcs-bg">
-                <img src="../assets/CH2S/ch2s_1.jpeg" alt="CH2S" loading="lazy">
-                <div class="pcs-bg-overlay"></div>
-              </div>
-              <div class="pcs-content">
-                <div class="pcs-meta">
-                  <span class="pcs-category">Unidades Hidráulicas</span>
-                  <span class="pcs-counter">02 / <span class="pcs-total">10</span></span>
-                </div>
-                <h2 class="pcs-title">CH2S</h2>
-                <p class="pcs-desc">Unidad hidráulica a combustión de 2 tomas. Alta presión y caudal para operaciones simultáneas de limpieza de casco.</p>
-                <div class="pcs-actions">
-                  <a href="produto_ch2s.html" class="btn btn-primary">Ver Especificaciones</a>
-                  <a href="../assets/catalogos/CH2S_35HP.pdf" class="btn btn-outline" download>Catálogo PDF</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="pcarousel-slide" data-cat="hpu" data-index="2">
-              <div class="pcs-bg">
-                <img src="../assets/CH3SD/ch3sd_1.jpg" alt="CH3SD" loading="lazy">
-                <div class="pcs-bg-overlay"></div>
-              </div>
-              <div class="pcs-content">
-                <div class="pcs-meta">
-                  <span class="pcs-category">Unidades Hidráulicas</span>
-                  <span class="pcs-counter">03 / <span class="pcs-total">10</span></span>
-                </div>
-                <h2 class="pcs-title">CH3SD</h2>
-                <p class="pcs-desc">Unidad hidráulica a combustión de 3 tomas con motor 27HP. Para operaciones a gran escala con múltiples herramientas simultáneas.</p>
-                <div class="pcs-actions">
-                  <a href="produto_ch3sd.html" class="btn btn-primary">Ver Especificaciones</a>
-                  <a href="../assets/catalogos/CH3SD_27HP.pdf" class="btn btn-outline" download>Catálogo PDF</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="pcarousel-slide" data-cat="hpu" data-index="3">
-              <div class="pcs-bg">
-                <img src="../assets/CHE2S/che2s_1.jpeg" alt="CHE2S" loading="lazy">
-                <div class="pcs-bg-overlay"></div>
-              </div>
-              <div class="pcs-content">
-                <div class="pcs-meta">
-                  <span class="pcs-category">Unidades Hidráulicas</span>
-                  <span class="pcs-counter">04 / <span class="pcs-total">10</span></span>
-                </div>
-                <h2 class="pcs-title">CHE2S</h2>
-                <p class="pcs-desc">Unidad hidráulica eléctrica de 2 tomas. Ideal para ambientes confinados y plataformas donde los motores a combustión están restringidos.</p>
-                <div class="pcs-actions">
-                  <a href="produto_che2s.html" class="btn btn-primary">Ver Especificaciones</a>
-                  <a href="../assets/catalogos/CHE2S.pdf" class="btn btn-outline" download>Catálogo PDF</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="pcarousel-slide" data-cat="hpu" data-index="4">
-              <div class="pcs-bg">
-                <img src="../assets/produtos/unidade_fundo_preto.jpg" alt="CAMC30" loading="lazy">
-                <div class="pcs-bg-overlay"></div>
-              </div>
-              <div class="pcs-content">
-                <div class="pcs-meta">
-                  <span class="pcs-category">Unidades Hidráulicas</span>
-                  <span class="pcs-counter">05 / <span class="pcs-total">10</span></span>
-                </div>
-                <h2 class="pcs-title">CAMC30</h2>
-                <p class="pcs-desc">Compresor de aire para buceo autónomo. Equipo de soporte crítico para operaciones subacuáticas con seguridad certificada.</p>
-                <div class="pcs-actions">
-                  <a href="produto_camc30.html" class="btn btn-primary">Ver Especificaciones</a>
-                  <a href="../assets/catalogos/CAMC30.pdf" class="btn btn-outline" download>Catálogo PDF</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="pcarousel-slide" data-cat="cleaning" data-index="5">
-              <div class="pcs-bg">
-                <img src="../assets/hpj40/hpj40_1.png" alt="HPJ-40" loading="lazy">
-                <div class="pcs-bg-overlay"></div>
-              </div>
-              <div class="pcs-content">
-                <div class="pcs-meta">
-                  <span class="pcs-category">Máquinas de Limpieza</span>
-                  <span class="pcs-counter">06 / <span class="pcs-total">10</span></span>
-                </div>
-                <h2 class="pcs-title">HPJ-40</h2>
-                <p class="pcs-desc">Máquina de limpieza de casco subacuática de alta presión. Reduce el tiempo en dique seco y mejora la eficiencia de combustible de la embarcación.</p>
-                <div class="pcs-actions">
-                  <a href="produto_hpj40.html" class="btn btn-primary">Ver Especificaciones</a>
-                  <a href="../assets/catalogos/PHJ-40.pdf" class="btn btn-outline" download>Catálogo PDF</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="pcarousel-slide" data-cat="cleaning" data-index="6">
-              <div class="pcs-bg">
-                <img src="../assets/hpj41/hpj41_1.png" alt="HPJ-41" loading="lazy">
-                <div class="pcs-bg-overlay"></div>
-              </div>
-              <div class="pcs-content">
-                <div class="pcs-meta">
-                  <span class="pcs-category">Máquinas de Limpieza</span>
-                  <span class="pcs-counter">07 / <span class="pcs-total">10</span></span>
-                </div>
-                <h2 class="pcs-title">HPJ-41</h2>
-                <p class="pcs-desc">Versión avanzada de la línea HPJ con sistema de fijación magnética. Opera en cascos verticales y curvos sin soporte del buzo.</p>
-                <div class="pcs-actions">
-                  <a href="produto_hpj41.html" class="btn btn-primary">Ver Especificaciones</a>
-                  <a href="../assets/catalogos/PHJ-41.pdf" class="btn btn-outline" download>Catálogo PDF</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="pcarousel-slide" data-cat="cleaning" data-index="7">
-              <div class="pcs-bg">
-                <img src="../assets/hpj25/hpj25_1.png" alt="HPJ-25" loading="lazy">
-                <div class="pcs-bg-overlay"></div>
-              </div>
-              <div class="pcs-content">
-                <div class="pcs-meta">
-                  <span class="pcs-category">Máquinas de Limpieza</span>
-                  <span class="pcs-counter">08 / <span class="pcs-total">10</span></span>
-                </div>
-                <h2 class="pcs-title">HPJ-25</h2>
-                <p class="pcs-desc">Máquina de limpieza compacta para embarcaciones más pequeñas. La misma tecnología HPJ en formato portátil para operaciones ágiles.</p>
-                <div class="pcs-actions">
-                  <a href="produto_hpj25.html" class="btn btn-primary">Ver Especificaciones</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="pcarousel-slide" data-cat="accessories" data-index="8">
-              <div class="pcs-bg">
-                <img src="../assets/mangote/mangote_1.png" alt="Mangueras MHTP" loading="lazy">
-                <div class="pcs-bg-overlay"></div>
-              </div>
-              <div class="pcs-content">
-                <div class="pcs-meta">
-                  <span class="pcs-category">Accesorios</span>
-                  <span class="pcs-counter">09 / <span class="pcs-total">10</span></span>
-                </div>
-                <h2 class="pcs-title">MANGUERAS MHTP</h2>
-                <p class="pcs-desc">Conjunto de mangueras hidráulicas de alta presión para uso subacuático. Desarrollados para trabajar junto con las unidades Equipamec.</p>
-                <div class="pcs-actions">
-                  <a href="produto_mangote.html" class="btn btn-primary">Ver Especificaciones</a>
-                  <a href="../assets/catalogos/mangote_mhtp.pdf" class="btn btn-outline" download>Catálogo PDF</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="pcarousel-slide" data-cat="accessories" data-index="9">
-              <div class="pcs-bg">
-                <img src="../assets/produtos/hpj_deck.jpg" alt="Línea ECA Cepillos" loading="lazy">
-                <div class="pcs-bg-overlay"></div>
-              </div>
-              <div class="pcs-content">
-                <div class="pcs-meta">
-                  <span class="pcs-category">Accesorios</span>
-                  <span class="pcs-counter">10 / <span class="pcs-total">10</span></span>
-                </div>
-                <h2 class="pcs-title">LÍNEA ECA</h2>
-                <p class="pcs-desc">Cepillos de acero y nylon para limpieza de casco en diferentes condiciones de incrustación. Compatibles con HPJ-40 y HPJ-41.</p>
-                <div class="pcs-actions">
-                  <a href="produto_escovas.html" class="btn btn-primary">Ver Especificaciones</a>
-                  <a href="../assets/catalogos/LINHA_ECA.pdf" class="btn btn-outline" download>Catálogo PDF</a>
-                </div>
-              </div>
-            </div>
-
-          </div><!-- /.pcarousel-track -->
-
-          <div class="pcarousel-dots" id="pcarousel-dots"></div>
-
         </section>
     </main>
 
