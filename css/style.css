@@ -299,6 +299,29 @@ ul {
   font-size: 0.85rem;
 }
 
+.dropdown-catalogo-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 8px 12px 4px;
+  padding: 8px 12px !important;
+  background: rgba(224,123,42,0.12);
+  border: 1px solid rgba(224,123,42,0.35);
+  border-radius: 4px;
+  color: var(--color-accent-orange) !important;
+  font-size: 0.75rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: background 0.2s ease !important;
+}
+
+.dropdown-catalogo-link:hover {
+  background: rgba(224,123,42,0.25) !important;
+  color: var(--color-accent-orange) !important;
+  padding-left: 12px !important;
+}
+
 .dropdown-menu li a:hover {
   background-color: var(--color-primary-light);
   color: var(--color-accent-orange);
