@@ -539,6 +539,54 @@ function runGSAPAnimations() {
         document.querySelector('.prod-nav-next')?.addEventListener('click', () => goTo(current + 1));
     })();
 
+    // ---- FABRICAÇÃO: STEPS, DIFERENCIAIS, GALERIA ----
+    if (document.querySelector('.fab-step')) {
+        document.querySelectorAll('.fab-step').forEach((step, i) => {
+            gsap.set(step, { opacity: 1 });
+            ScrollTrigger.create({
+                trigger: step,
+                start: 'top bottom-=80px',
+                once: true,
+                onEnter: () => {
+                    gsap.fromTo(step,
+                        { opacity: 0, y: 40 },
+                        { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out', delay: i * 0.05 }
+                    );
+                }
+            });
+        });
+    }
+
+    if (document.querySelector('.fab-diff-card')) {
+        gsap.set('.fab-diff-card', { opacity: 1 });
+        ScrollTrigger.create({
+            trigger: '.fab-diff-grid',
+            start: 'top bottom-=80px',
+            once: true,
+            onEnter: () => {
+                gsap.fromTo('.fab-diff-card',
+                    { opacity: 0, y: 40 },
+                    { opacity: 1, y: 0, stagger: 0.15, duration: 0.7, ease: 'power2.out' }
+                );
+            }
+        });
+    }
+
+    if (document.querySelector('.fab-grid-item')) {
+        gsap.set('.fab-grid-item', { opacity: 1 });
+        ScrollTrigger.create({
+            trigger: '.fab-grid',
+            start: 'top bottom-=80px',
+            once: true,
+            onEnter: () => {
+                gsap.fromTo('.fab-grid-item',
+                    { opacity: 0, scale: 0.97 },
+                    { opacity: 1, scale: 1, stagger: 0.08, duration: 0.6, ease: 'power2.out' }
+                );
+            }
+        });
+    }
+
     ScrollTrigger.refresh();
     console.log('ScrollTriggers registrados:', ScrollTrigger.getAll().length);
 }
