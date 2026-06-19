@@ -2246,6 +2246,16 @@ body.js-loading .page-loader {
   position: relative;
 }
 
+.servico-lista a {
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.servico-lista a:hover {
+  color: var(--color-accent-orange);
+}
+
 .servico-lista li::before {
   content: '';
   position: absolute;

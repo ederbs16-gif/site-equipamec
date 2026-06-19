@@ -1,3 +1,73 @@
+# Prompt — Refazer servico_fabricacao.html + Corrigir menu
+
+## Referência de padrão
+Seguir EXATAMENTE a mesma estrutura do servico_caldeiraria.html já aprovado:
+- Hero com vídeo de fundo (ou imagem como poster se não houver vídeo específico)
+- Seções .servico-bloco com .servico-bloco-header, listas, galeria GLightbox
+- Tabela de capacidade técnica
+- CTA simples no final
+- Mesma navbar, footer, WhatsApp float
+
+NÃO usar o layout anterior de servico_fabricacao.html (steps horizontais, grid de diferenciais).
+Reescrever do zero seguindo o padrão da caldeiraria.
+
+---
+
+## CORREÇÃO 1 — Menu de navegação (TODAS as páginas)
+
+O menu atual tem "Soluções ▼" com dropdown contendo "Nossos Produtos" dentro.
+Isso está errado. Corrigir para ter DOIS itens separados no menu:
+
+```html
+<ul class="nav-links">
+    <li><a href="index.html#hero">Início</a></li>
+    <li><a href="index.html#about">Sobre Nós</a></li>
+    <li><a href="index.html#services">Serviços</a></li>
+    <li><a href="portfolio.html">Galeria</a></li>
+    <li class="dropdown" id="nav-dropdown-produtos">
+        <a href="portfolio.html">Nossos Produtos ▼</a>
+        <ul class="dropdown-menu">
+            <li><a href="produto_ch1s.html">CH1S</a></li>
+            <li><a href="produto_ch2s.html">CH2S</a></li>
+            <li><a href="produto_ch3sd.html">CH3SD</a></li>
+            <li><a href="produto_che2s.html">CHE2S</a></li>
+            <li><a href="produto_camc30.html">CAMC30</a></li>
+            <li><a href="produto_hpj25.html">HPJ-25</a></li>
+            <li><a href="produto_hpj40.html">HPJ-40</a></li>
+            <li><a href="produto_hpj41.html">HPJ-41</a></li>
+            <li><a href="produto_escovas.html">Linha ECA</a></li>
+            <li><a href="produto_mangote.html">Mangotes MHTP</a></li>
+        </ul>
+    </li>
+    <li class="dropdown" id="nav-dropdown-solucoes">
+        <a href="servico_fabricacao.html">Soluções ▼</a>
+        <ul class="dropdown-menu">
+            <li><a href="servico_fabricacao.html">Fabricação Hidráulica</a></li>
+            <li><a href="servico_caldeiraria.html">Caldeiraria &amp; Retrofit</a></li>
+            <li><a href="servico_tornearia.html">Tornearia &amp; Usinagem</a></li>
+            <li><a href="servico_mergulho.html">Limpeza de Casco</a></li>
+        </ul>
+    </li>
+    <li><a href="index.html#contact" class="btn btn-outline">Contato</a></li>
+</ul>
+```
+
+Aplicar essa estrutura de menu em TODAS as páginas do site:
+index.html, portfolio.html, servico_caldeiraria.html, servico_fabricacao.html,
+servico_tornearia.html, servico_mergulho.html, todos os produto_*.html,
+e todas as versões en/ e es/ (com links ajustados para ../ e traduções dos labels).
+
+---
+
+## CORREÇÃO 2 — Reescrever servico_fabricacao.html
+
+Usar como hero o vídeo `assets/videos/hero_tornearia.webm` / `hero_tornearia.mp4`
+com poster `assets/videos/poster_tornearia.jpg` (são as imagens mais próximas
+da fábrica disponíveis).
+
+Estrutura seguindo o padrão caldeiraria:
+
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -8,62 +78,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="/assets/android-chrome-192x192.png">
-    <link rel="manifest" href="/assets/site.webmanifest">
+    <!-- favicons iguais ao servico_caldeiraria.html -->
 </head>
 <body>
-    <header class="navbar">
-        <div class="container nav-container">
-            <a href="index.html" class="logo"><img src="assets/logo.png" alt="Equipamec Logo" class="brand-logo" loading="lazy"></a>
-            <nav id="nav-menu" class="nav-menu">
-                <ul class="nav-links">
-                    <li><a href="index.html#hero">Início</a></li>
-                    <li><a href="index.html#about">Sobre Nós</a></li>
-                    <li><a href="index.html#services">Serviços</a></li>
-                    <li><a href="portfolio.html">Galeria</a></li>
-                    <li class="dropdown" id="nav-dropdown-produtos">
-                        <a href="portfolio.html">Nossos Produtos ▼</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="produto_ch1s.html">CH1S</a></li>
-                            <li><a href="produto_ch2s.html">CH2S</a></li>
-                            <li><a href="produto_ch3sd.html">CH3SD</a></li>
-                            <li><a href="produto_che2s.html">CHE2S</a></li>
-                            <li><a href="produto_camc30.html">CAMC30</a></li>
-                            <li><a href="produto_hpj25.html">HPJ-25</a></li>
-                            <li><a href="produto_hpj40.html">HPJ-40</a></li>
-                            <li><a href="produto_hpj41.html">HPJ-41</a></li>
-                            <li><a href="produto_escovas.html">Linha ECA</a></li>
-                            <li><a href="produto_mangote.html">Mangotes MHTP</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown" id="nav-dropdown-solucoes">
-                        <a href="servico_fabricacao.html">Soluções ▼</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="servico_fabricacao.html">Fabricação Hidráulica</a></li>
-                            <li><a href="servico_caldeiraria.html">Caldeiraria &amp; Retrofit</a></li>
-                            <li><a href="servico_tornearia.html">Tornearia &amp; Usinagem</a></li>
-                            <li><a href="servico_mergulho.html">Limpeza de Casco</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="index.html#contact" class="btn btn-outline">Contato</a></li>
-                </ul>
-                <div class="lang-switcher">
-                    <a href="servico_fabricacao.html" class="lang-btn active"><img src="https://flagcdn.com/16x12/br.png" width="16" height="12" alt="Português" class="flag"> PT</a>
-                    <span class="lang-divider">|</span>
-                    <a href="en/servico_fabricacao.html" class="lang-btn"><img src="https://flagcdn.com/16x12/us.png" width="16" height="12" alt="English" class="flag"> EN</a>
-                    <span class="lang-divider">|</span>
-                    <a href="es/servico_fabricacao.html" class="lang-btn"><img src="https://flagcdn.com/16x12/es.png" width="16" height="12" alt="Español" class="flag"> ES</a>
-                </div>
-            </nav>
-            <button class="hamburger" id="hamburger" aria-label="Menu">
-                <span class="bar"></span><span class="bar"></span><span class="bar"></span>
-            </button>
-        </div>
-    </header>
+    <!-- navbar com menu corrigido acima -->
 
     <main>
 
@@ -159,7 +177,7 @@
         </section>
 
         <!-- SEÇÃO 2: LINHA DE PRODUTOS -->
-        <section class="servico-bloco servico-bloco-alt" id="linha-produtos">
+        <section class="servico-bloco" id="linha-produtos">
             <div class="container">
 
                 <div class="servico-bloco-header fade-in">
@@ -229,43 +247,268 @@
 
     </main>
 
-    <footer class="footer">
-        <div class="container text-center">
-            <p>© 2026 Equipamec. Todos os direitos reservados. Feito com tecnologia industrial.</p>
-        </div>
-    </footer>
+    <!-- footer igual ao servico_caldeiraria.html -->
+    <!-- scripts iguais ao servico_caldeiraria.html -->
+    <!-- WhatsApp float igual ao servico_caldeiraria.html -->
 
-    <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-    <script src="js/script.js"></script>
-
-    <!-- WhatsApp Float -->
-    <div class="wa-float" id="waFloat">
-      <button class="wa-float-btn" id="waFloatBtn" aria-label="WhatsApp">
-        <svg class="wa-icon-whatsapp" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        <span class="wa-float-pulse"></span>
-      </button>
-      <div class="wa-form-popup" id="waFormPopup" aria-hidden="true">
-        <div class="wa-form-header">
-          <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          <div>
-            <strong>Fale com a Equipamec</strong>
-            <span>Resposta em minutos</span>
-          </div>
-          <button class="wa-form-close" id="waFormClose" aria-label="Fechar">&#x2715;</button>
-        </div>
-        <form class="wa-form" id="waContactForm">
-          <input type="text" name="wa_nome" placeholder="Nome *" required autocomplete="name">
-          <input type="text" name="wa_empresa" placeholder="Empresa" autocomplete="organization">
-          <input type="tel" name="wa_telefone" placeholder="Telefone *" required autocomplete="tel">
-          <input type="email" name="wa_email" placeholder="E-mail" autocomplete="email">
-          <button type="submit" class="wa-form-submit">
-            <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            Enviar pelo WhatsApp
-          </button>
-        </form>
-      </div>
-    </div>
 </body>
 </html>
+```
+
+## CSS necessário (se não existir ainda no style.css)
+
+Verificar se as classes abaixo já existem (vieram do servico_caldeiraria.html).
+Se existirem, não duplicar. Se não existirem, adicionar:
+
+```css
+.servico-hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.servico-hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.servico-hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.servico-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(5,20,15,0.85) 0%, rgba(5,20,15,0.5) 100%);
+}
+
+.servico-hero-content {
+  position: relative;
+  z-index: 2;
+  padding-top: 140px;
+  padding-bottom: 80px;
+  max-width: 700px;
+}
+
+.servico-hero-title {
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin-bottom: 20px;
+}
+
+.servico-hero-title em {
+  color: var(--color-accent-orange);
+  font-style: normal;
+}
+
+.servico-hero-sub {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.7;
+  max-width: 520px;
+  margin-bottom: 32px;
+}
+
+.servico-bloco {
+  padding: 80px 0;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.servico-bloco-header {
+  max-width: 760px;
+  margin-bottom: 48px;
+}
+
+.servico-bloco-header h2 {
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+
+.servico-bloco-lead {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.75;
+}
+
+.servico-dois-blocos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 48px;
+}
+
+.sdb-bloco h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--color-accent-orange);
+  display: inline-block;
+}
+
+.servico-lista {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.servico-lista li {
+  color: rgba(255,255,255,0.6);
+  font-size: 0.92rem;
+  line-height: 1.5;
+  padding-left: 16px;
+  position: relative;
+}
+
+.servico-lista li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent-orange);
+}
+
+.servico-lista a {
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.servico-lista a:hover {
+  color: var(--color-accent-orange);
+}
+
+.servico-galeria {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 48px;
+}
+
+.servico-gal-item {
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  display: block;
+  border-radius: 6px;
+}
+
+.servico-gal-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease, filter 0.3s ease;
+  filter: brightness(0.8);
+}
+
+.servico-gal-item:hover img {
+  transform: scale(1.05);
+  filter: brightness(1);
+}
+
+.capacidade-tecnica {
+  margin-top: 8px;
+}
+
+.capacidade-tecnica h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 16px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.cap-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.cap-table tr {
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.cap-table td {
+  padding: 12px 8px;
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.5;
+}
+
+.cap-label {
+  font-weight: 700;
+  color: var(--color-accent-orange) !important;
+  width: 160px;
+  letter-spacing: 0.06em;
+  font-size: 0.78rem !important;
+}
+
+.servico-cta {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #0d2a20 0%, #0a1f1a 100%);
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.servico-cta h2 {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+}
+
+.servico-cta p {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 32px;
+  line-height: 1.65;
+}
+
+.servico-img-placeholder {
+  background: rgba(255,255,255,0.04);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  border-radius: 6px;
+}
+
+.servico-img-placeholder span {
+  color: rgba(255,255,255,0.2);
+  font-size: 0.8rem;
+}
+
+@media (max-width: 768px) {
+  .servico-dois-blocos {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .servico-galeria {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+```
+
+## Ordem de execução
+
+1. Corrigir menu em TODAS as páginas (separar "Nossos Produtos" e "Soluções")
+2. Verificar se classes servico-* já existem no style.css (vieram da caldeiraria); adicionar apenas as que faltarem
+3. Reescrever servico_fabricacao.html do zero seguindo o padrão acima
+4. Testar no browser — deve ter visual idêntico ao servico_caldeiraria.html em termos de estrutura
+5. Commit: "fix: menu nossos produtos e solucoes separados; refaz servico_fabricacao no padrao caldeiraria"
