@@ -274,6 +274,31 @@ ul {
   /* remove pseudo-element underline from links inside dropdown */
 }
 
+.dropdown-category-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent-orange);
+  padding: 10px 16px 4px;
+  cursor: default;
+  pointer-events: none;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.dropdown-category-label:first-child {
+  border-top: none;
+}
+
+.dropdown-menu-categorias {
+  min-width: 220px;
+}
+
+.dropdown-menu-categorias li a {
+  padding: 7px 16px 7px 24px;
+  font-size: 0.85rem;
+}
+
 .dropdown-menu li a:hover {
   background-color: var(--color-primary-light);
   color: var(--color-accent-orange);
