@@ -550,6 +550,16 @@ if (document.readyState === 'complete') {
     window.addEventListener('load', runGSAPAnimations);
 }
 
+/* Autoplay seguro — hero vídeo caldeiraria */
+(function () {
+    const heroVid = document.querySelector('.servico-hero-video');
+    if (!heroVid) return;
+    heroVid.play().catch(() => {
+        heroVid.muted = true;
+        heroVid.play();
+    });
+})();
+
 /* Animações — Página de Serviço */
 (function () {
     if (!document.querySelector('.servico-bloco')) return;

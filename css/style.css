@@ -2087,10 +2087,17 @@ body.js-loading .page-loader {
 }
 
 .servico-hero-bg img {
+  display: none;
+}
+
+.servico-hero-video {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 30%;
+  object-position: center;
+  display: block;
 }
 
 .servico-hero-overlay {
