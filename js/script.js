@@ -549,3 +549,29 @@ if (document.readyState === 'complete') {
 } else {
     window.addEventListener('load', runGSAPAnimations);
 }
+
+/* Animações — Página de Serviço */
+(function () {
+    if (!document.querySelector('.servico-bloco')) return;
+    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.utils.toArray('.servico-bloco .fade-in').forEach(el => {
+        gsap.set(el, { opacity: 1 });
+        gsap.fromTo(el,
+            { opacity: 0, y: 40 },
+            {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                ease: 'power2.out',
+                scrollTrigger: {
+                    trigger: el,
+                    start: 'top 85%',
+                    toggleActions: 'play none none none'
+                }
+            }
+        );
+    });
+})();

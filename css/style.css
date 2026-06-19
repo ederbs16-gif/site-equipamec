@@ -2067,3 +2067,381 @@ body.js-loading .page-loader {
     max-width: 300px;
   }
 }
+
+/* ===================================================
+   PÁGINAS DE SERVIÇO
+   =================================================== */
+
+.servico-hero {
+  position: relative;
+  height: 85vh;
+  min-height: 520px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.servico-hero-bg {
+  position: absolute;
+  inset: 0;
+}
+
+.servico-hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+}
+
+.servico-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(10,31,26,0.92) 0%,
+    rgba(10,31,26,0.5) 50%,
+    rgba(10,31,26,0.15) 100%
+  );
+}
+
+.servico-hero-content {
+  position: relative;
+  z-index: 2;
+  padding-bottom: 4rem;
+  color: #fff;
+}
+
+.servico-hero-title {
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  font-weight: 800;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  margin: 0.5rem 0 1rem;
+  color: #fff;
+}
+
+.servico-hero-title em {
+  font-style: normal;
+  color: var(--color-accent-orange, #e07b2a);
+}
+
+.servico-hero-sub {
+  max-width: 560px;
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.82);
+  margin-bottom: 2rem;
+}
+
+.servico-bloco {
+  padding: 5rem 0;
+  background: #fff;
+}
+
+.servico-bloco-alt {
+  background: #f6f7f5;
+}
+
+.servico-bloco-header {
+  max-width: 720px;
+  margin-bottom: 3rem;
+}
+
+.servico-bloco-header h2 {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 800;
+  color: var(--color-primary-dark, #0a1f1a);
+  margin: 0.4rem 0 1rem;
+}
+
+.servico-bloco-lead {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: #444;
+}
+
+.retrofit-antes-depois {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.rad-card {
+  flex: 1;
+  min-width: 240px;
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.rad-card img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  display: block;
+}
+
+.rad-label {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.7rem;
+  border-radius: 4px;
+  color: #fff;
+}
+
+.rad-antes { background: #c0392b; }
+.rad-depois { background: var(--color-accent-orange, #e07b2a); }
+
+.rad-arrow {
+  font-size: 2rem;
+  color: var(--color-accent-orange, #e07b2a);
+  flex-shrink: 0;
+}
+
+.servico-dois-blocos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.sdb-bloco h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-accent-orange, #e07b2a);
+  border-bottom: 2px solid var(--color-accent-orange, #e07b2a);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.servico-lista {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.servico-lista li {
+  padding: 0.5rem 0 0.5rem 1rem;
+  border-bottom: 1px solid #eee;
+  font-size: 0.92rem;
+  color: #333;
+  position: relative;
+}
+
+.servico-lista li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-accent-orange, #e07b2a);
+}
+
+.servico-etapas {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.servico-etapas li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #eee;
+  font-size: 0.92rem;
+  color: #333;
+}
+
+.etapa-num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: var(--color-primary-dark, #0a1f1a);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.servico-galeria {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0.75rem;
+  margin-top: 2.5rem;
+}
+
+.servico-gal-item {
+  display: block;
+  border-radius: 6px;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+}
+
+.servico-gal-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.servico-gal-item:hover img {
+  transform: scale(1.04);
+}
+
+.caldeiraria-capacidades {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.cap-card {
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+
+.cap-img {
+  height: 200px;
+  overflow: hidden;
+}
+
+.cap-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.cap-card h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-primary-dark, #0a1f1a);
+  padding: 1rem 1rem 0.4rem;
+}
+
+.cap-card p {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: #555;
+  padding: 0 1rem 1.25rem;
+  margin-bottom: 0;
+}
+
+.servico-img-placeholder {
+  width: 100%;
+  height: 100%;
+  background: #e8e8e8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.servico-img-placeholder span {
+  font-size: 0.8rem;
+  color: #999;
+  font-style: italic;
+}
+
+.capacidade-tecnica {
+  margin-top: 3rem;
+}
+
+.capacidade-tecnica h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-accent-orange, #e07b2a);
+  margin-bottom: 1rem;
+}
+
+.cap-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.cap-table tr {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.cap-table td {
+  padding: 0.75rem 0;
+  color: #333;
+}
+
+.cap-label {
+  font-weight: 700;
+  color: var(--color-primary-dark, #0a1f1a);
+  width: 200px;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.servico-cta {
+  background: var(--color-primary-dark, #0a1f1a);
+  padding: 5rem 0;
+  color: #fff;
+}
+
+.servico-cta h2 {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 0.75rem;
+}
+
+.servico-cta p {
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 2rem;
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .servico-dois-blocos {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .caldeiraria-capacidades {
+    grid-template-columns: 1fr;
+  }
+
+  .retrofit-antes-depois {
+    flex-direction: column;
+  }
+
+  .rad-arrow {
+    transform: rotate(90deg);
+  }
+
+  .servico-hero {
+    height: 75vh;
+  }
+
+  .servico-galeria {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
