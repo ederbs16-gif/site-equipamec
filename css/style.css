@@ -1194,6 +1194,22 @@ ul {
     width: 100%;
     margin-left: 0;
     box-shadow: none;
+    display: none;
+  }
+
+  .dropdown.mobile-open > .dropdown-menu,
+  .dropdown-submenu.mobile-open > .dropdown-menu {
+    display: block;
+  }
+
+  .dropdown > a::after,
+  .dropdown-submenu > a::after {
+    transition: transform 0.25s ease;
+  }
+
+  .dropdown.mobile-open > a::after,
+  .dropdown-submenu.mobile-open > a::after {
+    transform: rotate(90deg);
   }
 
   .split-layout {

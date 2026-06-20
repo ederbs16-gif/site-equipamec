@@ -21,14 +21,47 @@ document.addEventListener('DOMContentLoaded', () => {
         hamburger.addEventListener('click', () => {
             navMenu.classList.toggle('active');
             navLinks.classList.toggle('active');
+            if (!navMenu.classList.contains('active')) {
+                document.querySelectorAll('.dropdown.mobile-open, .dropdown-submenu.mobile-open')
+                    .forEach(el => el.classList.remove('mobile-open'));
+            }
         });
-        navLinks.querySelectorAll('a').forEach(link => {
+        navLinks.querySelectorAll('a:not(.dropdown > a):not(.dropdown-submenu > a)').forEach(link => {
             link.addEventListener('click', () => {
                 navMenu.classList.remove('active');
                 navLinks.classList.remove('active');
+                document.querySelectorAll('.dropdown.mobile-open, .dropdown-submenu.mobile-open')
+                    .forEach(el => el.classList.remove('mobile-open'));
             });
         });
     }
+
+    // --- Dropdowns mobile (toque) ---
+    function isMobileNav() {
+        return window.matchMedia('(max-width: 768px)').matches;
+    }
+
+    document.querySelectorAll('.dropdown > a, .dropdown-submenu > a').forEach(trigger => {
+        trigger.addEventListener('click', (e) => {
+            if (!isMobileNav()) return;
+
+            const parent = trigger.parentElement;
+            const hasSubmenu = parent.querySelector(':scope > .dropdown-menu');
+            if (!hasSubmenu) return;
+
+            e.preventDefault();
+
+            const alreadyOpen = parent.classList.contains('mobile-open');
+
+            const isSubmenu = parent.classList.contains('dropdown-submenu');
+            parent.parentElement.querySelectorAll(`:scope > li${isSubmenu ? '.dropdown-submenu' : '.dropdown'}`)
+                .forEach(li => {
+                    if (li !== parent) li.classList.remove('mobile-open');
+                });
+
+            parent.classList.toggle('mobile-open', !alreadyOpen);
+        });
+    });
 
     // --- Contato via WhatsApp ---
     const contactForm = document.getElementById('main-contact-form');
@@ -65,9 +98,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Seletor de idioma ---
     document.querySelectorAll('.lang-switcher .lang-btn, .lang-switcher .lang-link').forEach(btn => {
         btn.addEventListener('click', (e) => {
+            const href = btn.getAttribute('href');
             document.querySelectorAll('.lang-switcher .lang-btn, .lang-switcher .lang-link')
                 .forEach(s => s.classList.remove('active'));
             e.currentTarget.classList.add('active');
+
+            if (href) {
+                e.preventDefault();
+                window.location.href = href;
+            }
         });
     });
 
