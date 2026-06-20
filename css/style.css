@@ -322,6 +322,278 @@ ul {
   padding-left: 12px !important;
 }
 
+/* ===================================================
+   PORTFOLIO HERO
+   =================================================== */
+
+.portfolio-hero {
+  position: relative;
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--color-primary-dark);
+}
+
+.portfolio-hero-bg {
+  position: absolute;
+  inset: 0;
+  background: url('../assets/produtos/unidade_fundo_preto.jpg') center/cover no-repeat;
+  filter: brightness(0.22);
+}
+
+.portfolio-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(5,20,15,0.25) 0%, rgba(5,20,15,0.92) 100%);
+}
+
+.portfolio-hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding-top: 140px;
+  padding-bottom: 40px;
+}
+
+.portfolio-hero-title {
+  font-size: clamp(3rem, 8vw, 7rem);
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin-bottom: 20px;
+}
+
+.portfolio-hero-title em {
+  color: var(--color-accent-orange);
+  font-style: normal;
+}
+
+.portfolio-hero-sub {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.55);
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.portfolio-cat-nav {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 32px 24px 48px;
+}
+
+.portfolio-cat-btn {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.15);
+  padding: 8px 20px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  border-radius: 2px;
+}
+
+.portfolio-cat-btn:hover,
+.portfolio-cat-btn.active {
+  color: #fff;
+  border-color: var(--color-accent-orange);
+  background: rgba(224,123,42,0.12);
+}
+
+.portfolio-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: 8px;
+  padding: 0.6rem 1.1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-primary-dark, #0a1f1a);
+  background: var(--color-accent-orange, #e07b2a);
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.portfolio-download-btn:hover {
+  background: #c96819;
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+/* ===================================================
+   PORTFOLIO GRID — Cards com hover expansível
+   =================================================== */
+
+.produtos-grid-section {
+  padding: 4rem 0 6rem;
+  background: #fff;
+}
+
+.produtos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+}
+
+.produto-card {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  aspect-ratio: 4/5;
+  cursor: pointer;
+  background: var(--color-primary-dark, #0a1f1a);
+}
+
+.pc-media {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.pc-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: scale(1.08);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.produto-card:hover .pc-media img {
+  transform: scale(1);
+}
+
+.pc-info {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to top,
+    rgba(10,31,26,0.97) 0%,
+    rgba(10,31,26,0.88) 70%,
+    rgba(10,31,26,0) 100%
+  );
+  padding: 2.5rem 1.25rem 1rem;
+  transform: translateY(calc(100% - 4.5rem));
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.produto-card:hover .pc-info {
+  transform: translateY(0);
+}
+
+.pc-info-category {
+  display: block;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent-orange, #e07b2a);
+  margin-bottom: 0.35rem;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.35s ease 0.05s, transform 0.35s ease 0.05s;
+}
+
+.pc-info-title {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.5rem;
+}
+
+.pc-info-desc {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: rgba(255,255,255,0.75);
+  margin: 0 0 1rem;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, opacity 0.35s ease 0.1s;
+}
+
+.pc-info-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-accent-orange, #e07b2a);
+  text-decoration: none;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.35s ease 0.12s, transform 0.35s ease 0.12s, gap 0.2s ease;
+}
+
+.pc-info-btn:hover { gap: 0.75rem; }
+
+.produto-card:hover .pc-info-category,
+.produto-card:hover .pc-info-desc,
+.produto-card:hover .pc-info-btn {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.produto-card:hover .pc-info-desc {
+  max-height: 80px;
+}
+
+.produto-card.is-hidden { display: none; }
+
+@media (max-width: 900px) {
+  .produtos-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .produtos-grid { grid-template-columns: 1fr; }
+
+  .pc-info {
+    transform: translateY(0);
+    padding: 1.5rem 1rem 1rem;
+    background: linear-gradient(to top, rgba(10,31,26,0.95) 0%, rgba(10,31,26,0.4) 100%);
+  }
+
+  .pc-info-category,
+  .pc-info-desc,
+  .pc-info-btn {
+    opacity: 1;
+    transform: none;
+  }
+
+  .pc-info-desc { max-height: 80px; }
+  .pc-media img { transform: scale(1); }
+
+  .portfolio-download-btn {
+    margin-left: 0;
+    width: 100%;
+    justify-content: center;
+  }
+}
+
 .dropdown-menu li a:hover {
   background-color: var(--color-primary-light);
   color: var(--color-accent-orange);

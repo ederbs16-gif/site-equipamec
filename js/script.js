@@ -587,6 +587,28 @@ function runGSAPAnimations() {
         });
     }
 
+    // ---- PORTFOLIO GRID: entrada dos cards ----
+    if (document.querySelector('.produto-card')) {
+        gsap.utils.toArray('.produto-card').forEach((card, i) => {
+            gsap.set(card, { opacity: 1 });
+            gsap.fromTo(card,
+                { opacity: 0, y: 30 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.6,
+                    delay: (i % 3) * 0.08,
+                    ease: 'power2.out',
+                    scrollTrigger: {
+                        trigger: card,
+                        start: 'top 90%',
+                        toggleActions: 'play none none none'
+                    }
+                }
+            );
+        });
+    }
+
     ScrollTrigger.refresh();
     console.log('ScrollTriggers registrados:', ScrollTrigger.getAll().length);
 }
@@ -605,6 +627,33 @@ if (document.readyState === 'complete') {
     heroVid.play().catch(() => {
         heroVid.muted = true;
         heroVid.play();
+    });
+})();
+
+/* ===================================================
+   PORTFOLIO GRID — Filtro por categoria
+   =================================================== */
+
+(function () {
+    const grid = document.getElementById('produtos-grid-list');
+    if (!grid) return;
+
+    const cards = Array.from(grid.querySelectorAll('.produto-card'));
+    const filterBtns = document.querySelectorAll('.portfolio-cat-btn');
+
+    function applyFilter(cat) {
+        cards.forEach(card => {
+            const match = cat === 'all' || card.dataset.cat === cat;
+            card.classList.toggle('is-hidden', !match);
+        });
+    }
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            applyFilter(btn.dataset.cat);
+        });
     });
 })();
 
